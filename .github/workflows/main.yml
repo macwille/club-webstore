@@ -24,6 +24,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: npm install frontend
+      run: npm install
+      working-directory: frontend
     - name: lint frontend
       run: npm run lint
       working-directory: frontend
