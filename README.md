@@ -4,6 +4,8 @@
 
 React app template for a generic sports club.
 
+[Fullstack](https://fullstackopen.com/en/) open course practice project. 
+
 ## Features
 
 ### Done
@@ -21,3 +23,5 @@ React app template for a generic sports club.
 * News page
 
 ## Documents
+
+Work schedule
