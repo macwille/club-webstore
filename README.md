@@ -24,4 +24,4 @@ React app template for a generic sports club.
 
 ## Documents
 
-Work schedule
+[Working Hours](https://github.com/macwille/club-webstore/blob/main/documents/work-hours.md)
