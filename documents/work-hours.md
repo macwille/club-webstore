@@ -8,13 +8,13 @@ Time used for the development of the project. Hours will be detailed daily and m
 
 | Days | Hours |
 | :--  | :---: |
-| 1    | 2     |
+| 1    | 3     |
 
 ### Detailed 
 
 | Date     | Info          | Time | 
 | :------- | :-----------: | :--: | 
-| 31.12    | Create project repository | 2   |
+| 31.12    | Create project repository | 3 |
 
 
  
