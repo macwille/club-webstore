@@ -1,6 +1,8 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "author": "Ville Manninen",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "react": "^17.0.1",
