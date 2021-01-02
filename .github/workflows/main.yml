@@ -25,9 +25,6 @@ jobs:
       - name: npm ci frontend
         run: npm ci
         working-directory: frontend
-      - name: npm install frontend
-        run: npm install
-        working-directory: frontend
       - name: lint frontend
         run: npm run lint
         working-directory: frontend
@@ -38,3 +35,5 @@ jobs:
           heroku_app_name: "club-webstore"
           heroku_email: "manninen94@gmail.com"
           appdir: "frontend"
+        env:
+          HD_APP_BASE: "frontend"
