@@ -1,12 +1,18 @@
 import React from 'react'
+import { Container } from '@material-ui/core'
+import MainHeader from './components/MainHeader'
+import Main from './components/Main'
+import Navigation from './components/Navigation'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
-    <div>
-      <h2>Header</h2>
-      <nav>Navbar</nav>
-      <p>About</p>
-    </div>
+    <Container>
+      <MainHeader title='Club Webstore' gutterBottom />
+      <Navigation />
+      <Main />
+      <Footer />
+    </Container>
   )
 }
 
