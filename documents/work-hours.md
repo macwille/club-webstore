@@ -8,15 +8,16 @@ Time used for the development of the project. Hours will be detailed daily and m
 
 | Days | Hours |
 | :--  | :---: |
-| 3    | 10     |
+| 4    | 13    |
 
 ### Detailed 
 
 | Date     | Info          | Time | 
 | :------- | :-----------: | :--: | 
 | 31.12    | Create project repository | 3 |
-| 1.1    | Started working on workflow | 2 |
-| 2.1    | Start on frontend | 5 |
+| 1.1      | Started working on workflow | 2 |
+| 2.1      | Start on frontend | 5 |
+| 3.1      | Start on backend | 3 |
 
 
  
