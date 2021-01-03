@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <Container>
       <Typography align="center">
-        Made by Ville Manninen.
+        Made by  <Link href="https://github.com/macwille">Ville Manninen</Link>.
         Licensed <Link href="https://opensource.org/licenses/MIT">MIT</Link>
       </Typography>
     </Container>

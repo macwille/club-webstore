@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import { Container } from '@material-ui/core'
 import Courses from './Courses'
 import Store from './Store'
-import Register from './Register'
+import RegisterForm from './RegisterForm'
 import Login from './Login'
 import About from './About'
 
@@ -19,7 +19,7 @@ const Main = () => {
           <Store />
         </Route>
         <Route path="/register">
-          <Register />
+          <RegisterForm />
         </Route>
         <Route path="/login">
           <Login />

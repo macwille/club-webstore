@@ -5,6 +5,9 @@ const bodyParser = require('body-parser')
 const config = require('./util/config')
 const middleware = require('./util/middleware')
 const logger = require('./util/logger')
+
+const usersRouter = require('./controllers/users')
+
 const mongoose = require('mongoose')
 
 logger.info('connecting to Mongoose')
@@ -19,6 +22,8 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
 
 app.use(cors())
 app.use(bodyParser.json())
+
+app.use('/api/users', usersRouter)
 
 if (process.env.NODE_ENV === 'test') {
   logger.info('Testing mode detected')
