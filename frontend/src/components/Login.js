@@ -1,38 +1,60 @@
-import { Box, Typography } from '@material-ui/core'
+import { Box, Container, Typography } from '@material-ui/core'
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useField } from '../hooks/inputFields'
+import loginService from '../services/login'
 
-const Login = () => {
+const Login = ({ user, setUser }) => {
   const username = useField('text')
-  const password = useField('text')
+  const password = useField('password')
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    const user = {
-      username: username.value,
-      password: password.value
+    try {
+      const userObject = await loginService.login({
+        username: username.value,
+        password: password.value,
+      })
+      localStorage.setItem('token', userObject.token)
+      window.localStorage.setItem('loggedUser', JSON.stringify(userObject))
+      setUser(userObject.username)
+    } catch (exception) {
+      console.log('Exception loging in', exception)
     }
-    console.log('Login:', user)
+  }
+  if (user) {
+    return (
+      <Box>
+        <Typography variant="h6">Already Logged in as: {user}</Typography>
+      </Box>
+    )
   }
 
   return (
-    <Box>
+    <Container>
       <Typography variant="h4">Login</Typography>
-      <Typography>
+      <Box>
         <form onSubmit={handleSubmit}>
-          <p>
-            Username:<input {...username} clear={null} />
+          <Typography paragraph={true}>
+            Username:<input {...username} clear={null} required />
             <button onClick={username.clear}>Clear</button>
-          </p>
-          <p>
-            Password:<input {...password} clear={null} />
+          </Typography>
+          <Typography paragraph={true}>
+            Password:<input {...password} clear={null} required />
             <button onClick={password.clear}>Clear</button>
-          </p>
+          </Typography>
           <button type="submit">Login</button>
         </form>
-      </Typography>
-    </Box>
+      </Box>
+    </Container >
   )
 }
+
+
+Login.propTypes = {
+  user: PropTypes.string,
+  setUser: PropTypes.func
+}
+
 
 export default Login

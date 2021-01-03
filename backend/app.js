@@ -7,6 +7,7 @@ const middleware = require('./util/middleware')
 const logger = require('./util/logger')
 
 const usersRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
 
 const mongoose = require('mongoose')
 
@@ -22,8 +23,10 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
 
 app.use(cors())
 app.use(bodyParser.json())
+app.use(express.static('build'))
 
 app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 if (process.env.NODE_ENV === 'test') {
   logger.info('Testing mode detected')

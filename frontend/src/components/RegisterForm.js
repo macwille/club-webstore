@@ -1,25 +1,21 @@
 import { Box, Typography } from '@material-ui/core'
-import React, { useEffect } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { useField } from '../hooks/inputFields'
+import userService from '../services/users'
 
-const RegisterForm = () => {
+const RegisterForm = ({ user, setUser }) => {
   const username = useField('text')
-  const password = useField('text')
+  const password = useField('password')
   const firstname = useField('text')
   const lastname = useField('text')
   const address = useField('text')
   const postcode = useField('text')
-  const email = useField('text')
-
-  useEffect(() => {
-    if (username && username.value.length > 2) {
-      console.log(`Check: ${username.value}`)
-    }
-  }, [username])
+  const email = useField('email')
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const user = {
+    const newUser = {
       username: username.value,
       firstname: firstname.value,
       lastname: lastname.value,
@@ -28,43 +24,63 @@ const RegisterForm = () => {
       email: email.value,
       password: password.value
     }
+    try {
+      userService.create(newUser).then(response => {
+        console.log('Added user', response)
+        setUser(response.username)
+      })
+    } catch (error) {
+      console.log(error)
+    }
 
-    console.log('Submit:', user)
+    console.log('Submit:', newUser)
+  }
+
+  if (user) {
+    return (
+      <Box>
+        <Typography variant="h6">Already Logged in as: {user}</Typography>
+      </Box>
+    )
   }
 
   return (
     <Box>
       <Typography variant="h4">Register</Typography>
-      <Typography>
-        <form onSubmit={handleSubmit}>
-          <p>
-            Username:<input {...username} clear={null} />
-            <button onClick={username.clear}>Clear</button>
-          Password:<input {...password} clear={null} />
-            <button onClick={password.clear}>Clear</button>
-          </p>
-          <p>
-            First name:<input {...firstname} clear={null} />
-            <button onClick={firstname.clear}>Clear</button>
-          Last name:<input {...lastname} clear={null} />
-            <button onClick={lastname.clear}>Clear</button>
-          </p>
-          <p>
-            Address:<input {...address} clear={null} />
-            <button onClick={address.clear}>Clear</button>
+      <form onSubmit={handleSubmit}>
+        <Typography paragraph={true}>
+          Username:<input {...username} clear={null} required />
+          <button onClick={username.clear}>Clear</button>
+          Password:<input {...password} clear={null} required />
+          <button onClick={password.clear}>Clear</button>
+        </Typography>
+        <Typography paragraph={true}>
+          First name:<input {...firstname} clear={null} required />
+          <button onClick={firstname.clear}>Clear</button>
+          Last name:<input {...lastname} clear={null} required />
+          <button onClick={lastname.clear}>Clear</button>
+        </Typography>
+        <Typography paragraph={true}>
+          Address:<input {...address} clear={null} />
+          <button onClick={address.clear}>Clear</button>
           Postcode:<input {...postcode} clear={null} />
-            <button onClick={postcode.clear}>Clear</button>
-          </p>
-          <p>
-            Email:<input {...email} clear={null} />
-            <button onClick={email.clear}>Clear</button>
-          </p>
-          <button type="submit">Submit</button>
-        </form>
-      </Typography>
+          <button onClick={postcode.clear}>Clear</button>
+        </Typography>
+        <Typography paragraph={true}>
+          Email:<input {...email} clear={null} required />
+          <button onClick={email.clear}>Clear</button>
+        </Typography>
+        <button type="submit">Submit</button>
+      </form>
     </Box>
   )
 
 }
+
+RegisterForm.propTypes = {
+  user: PropTypes.string,
+  setUser: PropTypes.func
+}
+
 
 export default RegisterForm
