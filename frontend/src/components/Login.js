@@ -1,13 +1,15 @@
-import { Box, Container, Typography } from '@material-ui/core'
 import React from 'react'
-import { useField } from '../hooks/inputFields'
-import loginService from '../services/login'
+import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoginUser } from '../reducers/loginReducer'
+import { Box, Typography } from '@material-ui/core'
+import { useField } from '../hooks/inputFields'
+import loginService from '../services/login'
 
 const Login = () => {
-  const dispatch = useDispatch()
   const user = useSelector(state => state.login)
+  const dispatch = useDispatch()
+  const history = useHistory()
 
   const username = useField('text')
   const password = useField('password')
@@ -22,6 +24,7 @@ const Login = () => {
       localStorage.setItem('token', userObject.token)
       window.localStorage.setItem('loggedUser', JSON.stringify(userObject))
       dispatch(setLoginUser(userObject.username))
+      history.push('/')
     } catch (exception) {
       console.log('Exception logging in', exception)
     }
@@ -35,22 +38,20 @@ const Login = () => {
   }
 
   return (
-    <Container>
+    <Box>
       <Typography variant="h4">Login</Typography>
-      <Box>
-        <form onSubmit={handleSubmit}>
-          <Typography paragraph={true}>
-            Username:<input {...username} clear={null} required />
-            <button onClick={username.clear}>Clear</button>
-          </Typography>
-          <Typography paragraph={true}>
-            Password:<input {...password} clear={null} required />
-            <button onClick={password.clear}>Clear</button>
-          </Typography>
-          <button type="submit">Login</button>
-        </form>
-      </Box>
-    </Container >
+      <form onSubmit={handleSubmit}>
+        <Typography paragraph={true}>
+          Username:<input {...username} clear={null} required />
+          <button onClick={username.clear}>Clear</button>
+        </Typography>
+        <Typography paragraph={true}>
+          Password:<input {...password} clear={null} required />
+          <button onClick={password.clear}>Clear</button>
+        </Typography>
+        <button type="submit">Login</button>
+      </form>
+    </Box >
   )
 }
 

@@ -8,6 +8,12 @@ const Navigation = () => {
   const user = useSelector(state => state.login)
   const dispatch = useDispatch()
 
+  const handleLogout = (event) => {
+    event.preventDefault()
+    dispatch(clearLoginUser())
+    window.localStorage.clear()
+  }
+
   return (
     <Toolbar>
       <Button component={ReactLink} to="/">Home</Button>
@@ -15,7 +21,7 @@ const Navigation = () => {
       <Button component={ReactLink} to="/store">Store</Button>
       <Button component={ReactLink} to="/login">Login</Button>
       <Button component={ReactLink} to="/register">Register</Button>
-      {user && <Button onClick={() => dispatch(clearLoginUser())}>Logout</Button>}
+      {user && <Button onClick={handleLogout}>Logout</Button>}
     </Toolbar>
   )
 }

@@ -1,5 +1,6 @@
 import { Box, Typography } from '@material-ui/core'
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useField } from '../hooks/inputFields'
 import userService from '../services/users'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,6 +9,7 @@ import { setLoginUser } from '../reducers/loginReducer'
 const RegisterForm = () => {
   const user = useSelector(state => state.login)
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const username = useField('text')
   const password = useField('password')
@@ -32,12 +34,11 @@ const RegisterForm = () => {
       userService.create(newUser).then(response => {
         console.log('Added user', response)
         dispatch(setLoginUser(response.username))
+        history.push('/')
       })
     } catch (error) {
       console.log(error)
     }
-
-    console.log('Submit:', newUser)
   }
 
   if (user) {
