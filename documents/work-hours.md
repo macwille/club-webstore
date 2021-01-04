@@ -18,7 +18,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 | 1.1      | Started working on workflow | 2 |
 | 2.1      | Start on frontend | 5 |
 | 3.1      | Start on backend, added user registeration | 9 |
-| 4.1      | Implimented Redux | 2 |
+| 4.1      | Implimented Redux and Single page app setup | 4 |
 
 
  
