@@ -1,10 +1,14 @@
 import { Box, Typography } from '@material-ui/core'
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useField } from '../hooks/inputFields'
 import userService from '../services/users'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoginUser } from '../reducers/loginReducer'
 
-const RegisterForm = ({ user, setUser }) => {
+const RegisterForm = () => {
+  const user = useSelector(state => state.login)
+  const dispatch = useDispatch()
+
   const username = useField('text')
   const password = useField('password')
   const firstname = useField('text')
@@ -27,7 +31,7 @@ const RegisterForm = ({ user, setUser }) => {
     try {
       userService.create(newUser).then(response => {
         console.log('Added user', response)
-        setUser(response.username)
+        dispatch(setLoginUser(response.username))
       })
     } catch (error) {
       console.log(error)
@@ -76,11 +80,5 @@ const RegisterForm = ({ user, setUser }) => {
   )
 
 }
-
-RegisterForm.propTypes = {
-  user: PropTypes.string,
-  setUser: PropTypes.func
-}
-
 
 export default RegisterForm

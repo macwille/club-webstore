@@ -6,6 +6,7 @@ import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 
 const App = () => {
+  // window.localStorage.clear()
 
   return (
     <Container>

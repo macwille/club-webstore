@@ -1,10 +1,14 @@
 import { Box, Container, Typography } from '@material-ui/core'
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useField } from '../hooks/inputFields'
 import loginService from '../services/login'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoginUser } from '../reducers/loginReducer'
 
-const Login = ({ user, setUser }) => {
+const Login = () => {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.login)
+
   const username = useField('text')
   const password = useField('password')
 
@@ -17,9 +21,9 @@ const Login = ({ user, setUser }) => {
       })
       localStorage.setItem('token', userObject.token)
       window.localStorage.setItem('loggedUser', JSON.stringify(userObject))
-      setUser(userObject.username)
+      dispatch(setLoginUser(userObject.username))
     } catch (exception) {
-      console.log('Exception loging in', exception)
+      console.log('Exception logging in', exception)
     }
   }
   if (user) {
@@ -49,12 +53,5 @@ const Login = ({ user, setUser }) => {
     </Container >
   )
 }
-
-
-Login.propTypes = {
-  user: PropTypes.string,
-  setUser: PropTypes.func
-}
-
 
 export default Login

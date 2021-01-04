@@ -1,16 +1,23 @@
 import { Box, Typography, CircularProgress } from '@material-ui/core'
-import React, { useState, useEffect } from 'react'
-import userService from '../services/users'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { initilizeUsers } from '../reducers/userReducer'
+
 
 const About = () => {
 
-  const [users, setUsers] = useState(null)
-
+  const users = useSelector(state => state.users)
+  const dispatch = useDispatch()
+  /*
+    useEffect(() => {
+      userService
+        .getAll()
+        .then(initial => { setUsers(initial) })
+    }, [])
+  */
   useEffect(() => {
-    userService
-      .getAll()
-      .then(initial => { setUsers(initial) })
-  }, [])
+    dispatch(initilizeUsers())
+  }, [dispatch])
 
   const renderUsers = () => {
     if (users) {
