@@ -1,10 +1,10 @@
-import { Box, Typography } from '@material-ui/core'
 import React from 'react'
+import { Box, Typography } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
-import { useField } from '../hooks/inputFields'
-import userService from '../services/users'
+import { useField } from '../../hooks/inputFields'
+import userService from '../../services/users'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoginUser } from '../reducers/loginReducer'
+import { setLoginUser } from '../../reducers/loginReducer'
 
 const RegisterForm = () => {
   const user = useSelector(state => state.login)

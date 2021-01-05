@@ -7,18 +7,18 @@ const courseSchema = mongoose.Schema({
     unique: true
   },
   description: String,
+  startDate: Date,
   price: Number,
-  schedule: [
-    {
-      type: Date,
-    }
-  ],
   paricipants: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     }
-  ]
+  ],
+  trainer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
 courseSchema.set('toJSON', {

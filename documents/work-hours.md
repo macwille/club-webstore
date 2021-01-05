@@ -8,7 +8,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 
 | Days | Hours |
 | :--  | :---: |
-| 5    | 24    |
+| 5    | 28    |
 
 ### Detailed 
 
@@ -19,6 +19,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 | 2.1      | Start on frontend | 5 |
 | 3.1      | Start on backend, added user registeration | 9 |
 | 4.1      | Implimented Redux and Single page app setup | 4 |
+| 5.1      | Added a basic store and products functionality | 4 |
 
 
  

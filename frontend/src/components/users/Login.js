@@ -1,10 +1,10 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoginUser } from '../reducers/loginReducer'
+import { setLoginUser } from '../../reducers/loginReducer'
 import { Box, Typography } from '@material-ui/core'
-import { useField } from '../hooks/inputFields'
-import loginService from '../services/login'
+import { useField } from '../../hooks/inputFields'
+import loginService from '../../services/login'
 
 const Login = () => {
   const user = useSelector(state => state.login)

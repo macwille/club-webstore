@@ -7,7 +7,9 @@ const productSchema = mongoose.Schema({
     unique: true
   },
   description: String,
-  price: Number,
+  euros: Number,
+  cents: Number,
+  stock: Number,
 })
 
 productSchema.set('toJSON', {
