@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoginUser } from '../../reducers/loginReducer'
-import { Box, Typography } from '@material-ui/core'
+import { Button, Box, Container, TextField, Typography } from '@material-ui/core'
 import { useField } from '../../hooks/inputFields'
 import loginService from '../../services/login'
 
@@ -31,27 +31,29 @@ const Login = () => {
   }
   if (user) {
     return (
-      <Box>
+      <Container>
         <Typography variant="h6">Already Logged in as: {user}</Typography>
-      </Box>
+      </Container>
     )
   }
 
   return (
     <Box>
-      <Typography variant="h4">Login</Typography>
-      <form onSubmit={handleSubmit}>
-        <Typography paragraph={true}>
-          Username:<input {...username} clear={null} required />
-          <button onClick={username.clear}>Clear</button>
-        </Typography>
-        <Typography paragraph={true}>
-          Password:<input {...password} clear={null} required />
-          <button onClick={password.clear}>Clear</button>
-        </Typography>
-        <button type="submit">Login</button>
-      </form>
-    </Box >
+      <Container>
+        <Typography variant="h4" paragraph>Login</Typography>
+        <form onSubmit={handleSubmit}>
+          <Typography paragraph={true}>
+            <TextField label="Username" variant="outlined" {...username} clear={null} required />
+            <Button color="primary" onClick={username.clear}>Clear</Button>
+          </Typography>
+          <Typography paragraph={true}>
+            <TextField label="Password" variant="outlined" {...password} clear={null} required />
+            <Button color="primary" onClick={password.clear}>Clear</Button>
+          </Typography>
+          <Button variant="contained" color="primary" type="submit">Login</Button>
+        </form>
+      </Container >
+    </Box>
   )
 }
 

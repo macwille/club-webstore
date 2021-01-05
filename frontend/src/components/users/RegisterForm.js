@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography } from '@material-ui/core'
+import { Box, Container, Button, TextField, Typography } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import { useField } from '../../hooks/inputFields'
 import userService from '../../services/users'
@@ -51,32 +51,28 @@ const RegisterForm = () => {
 
   return (
     <Box>
-      <Typography variant="h4">Register</Typography>
-      <form onSubmit={handleSubmit}>
-        <Typography paragraph={true}>
-          Username:<input {...username} clear={null} required />
-          <button onClick={username.clear}>Clear</button>
-          Password:<input {...password} clear={null} required />
-          <button onClick={password.clear}>Clear</button>
-        </Typography>
-        <Typography paragraph={true}>
-          First name:<input {...firstname} clear={null} required />
-          <button onClick={firstname.clear}>Clear</button>
-          Last name:<input {...lastname} clear={null} required />
-          <button onClick={lastname.clear}>Clear</button>
-        </Typography>
-        <Typography paragraph={true}>
-          Address:<input {...address} clear={null} />
-          <button onClick={address.clear}>Clear</button>
-          Postcode:<input {...postcode} clear={null} />
-          <button onClick={postcode.clear}>Clear</button>
-        </Typography>
-        <Typography paragraph={true}>
-          Email:<input {...email} clear={null} required />
-          <button onClick={email.clear}>Clear</button>
-        </Typography>
-        <button type="submit">Submit</button>
-      </form>
+      <Container>
+        <form onSubmit={handleSubmit} autoComplete="off">
+          <Typography variant="h4" paragraph>Register</Typography>
+          <Typography paragraph={true}>
+            <TextField label="Username" variant="outlined" {...username} clear={null} required />
+            <Button color="primary" onClick={username.clear}>Clear</Button>
+            <TextField label="Password" variant="outlined" {...password} clear={null} required />
+            <Button color="primary" onClick={password.clear}>Clear</Button>
+            <TextField label="First name" variant="outlined" {...firstname} clear={null} required />
+            <Button color="primary" onClick={firstname.clear}>Clear</Button>
+            <TextField label="Last name" variant="outlined" {...lastname} clear={null} required />
+            <Button color="primary" onClick={lastname.clear}>Clear</Button>
+            <TextField label="Address" variant="outlined" {...address} clear={null} />
+            <Button color="primary" onClick={address.clear}>Clear</Button>
+            <TextField label="Postcode" variant="outlined" {...postcode} clear={null} />
+            <Button color="primary" onClick={postcode.clear}>Clear</Button>
+            <TextField label="Email" variant="outlined" {...email} clear={null} />
+            <Button color="primary" onClick={email.clear}>Clear</Button>
+            <Button variant="contained" color="primary" type="submit">Submit</Button>
+          </Typography>
+        </form>
+      </Container>
     </Box>
   )
 

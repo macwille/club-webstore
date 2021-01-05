@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Typography } from '@material-ui/core'
+import { Box, Typography, Button, TextField } from '@material-ui/core'
 import productService from '../../services/products'
 import { useField } from '../../hooks/inputFields'
 
@@ -33,18 +33,16 @@ const ProductForm = ({ products, setProducts }) => {
       <form onSubmit={handleSubmit}>
         <Typography variant="h6">Create new</Typography>
         <Typography paragraph={true}>
-          Name:<input {...name} clear={null} required />
-          <button onClick={name.clear}>Clear</button>
-          Description:<input {...description} clear={null} required />
-          <button onClick={description.clear}>Clear</button>
+          <TextField label="Name" variant="outlined" {...name} clear={null} required />
+          <Button color="primary" size="medium" onClick={name.clear}>Clear</Button>
+          <TextField label="Description" variant="outlined" {...description} clear={null} required />
+          <Button color="primary" size="small" onClick={description.clear}>Clear</Button>
+          <TextField label="Euros" variant="outlined" {...euros} clear={null} min="0" required />
+          <Button color="primary" size="small" onClick={euros.clear}>Clear</Button>
+          <TextField label="Cents" variant="outlined" {...cents} clear={null} min="0" max="99" required />
+          <Button color="primary" size="small" onClick={cents.clear}>Clear</Button>
+          <Button variant="contained" color="primary" type="submit">Submit</Button>
         </Typography>
-        <Typography paragraph={true}>
-          Euros:<input {...euros} clear={null} min="0" required />
-          <button onClick={euros.clear}>Clear</button>
-          Cents:<input {...cents} clear={null} min="0" max="99" required />
-          <button onClick={cents.clear}>Clear</button>
-        </Typography>
-        <button type="submit">Submit</button>
       </form>
     </Box>
   )

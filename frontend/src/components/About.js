@@ -1,4 +1,4 @@
-import { Box, Typography, CircularProgress } from '@material-ui/core'
+import { Box, Container, Typography, CircularProgress } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { initilizeUsers } from '../reducers/userReducer'
@@ -38,11 +38,13 @@ const About = () => {
 
   return (
     <Box>
-      <Typography variant="h4">Users</Typography>
-      <ul>
+      <Container>
+        <Typography variant="h4">Users</Typography>
+        <ul>
 
-        {renderUsers()}
-      </ul>
+          {renderUsers()}
+        </ul>
+      </Container>
     </Box>
   )
 }

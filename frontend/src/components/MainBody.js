@@ -1,16 +1,17 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { Box } from '@material-ui/core'
+import { Paper } from '@material-ui/core'
 import Courses from './Courses'
 import Store from './store/Store'
 import RegisterForm from './users/RegisterForm'
 import Login from './users/Login'
 import About from './About'
+import Footer from './Footer'
 
 const MainBody = () => {
 
   return (
-    <Box className="main-body-box">
+    <Paper className="main-body-box">
       <Switch>
         <Route path="/courses">
           <Courses />
@@ -28,7 +29,8 @@ const MainBody = () => {
           <About />
         </Route>
       </Switch>
-    </Box>
+      <Footer />
+    </Paper>
   )
 }
 
