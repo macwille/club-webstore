@@ -1,40 +1,20 @@
-# Club application
+# Club Webstore Application [DEMO](https://club-webstore.herokuapp.com/)
 
 ![GitHub Actions](https://github.com/macwille/club-webstore/workflows/CI/CD-pipeline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-React app template for a generic sports club.
+## About
 
-[Fullstack](https://fullstackopen.com/en/) open course practice project. 
+This project is part of the [Fullstack](https://fullstackopen.com/en/) -course.
+
+Generic React application designed primarily for a sports club, with online booking for courses and a small online store of products. 
+
+The application uses [Material UI](https://material-ui.com/) for styling.
 
 ## Application
 
-This project is designed to be working as a signle page application, using the backend domain and a production build of the frontend domain. To get started read more on the [backend](https://github.com/macwille/club-webstore/tree/main/backend)
-
-Application is running on Heroku server here: [Heroku](https://club-webstore.herokuapp.com/)
-
-## Features
-
-### Started
-
-* User can register and login.
-
-* Store page.
-
-* Courses page
-
-### Planned
-
-* Main page with info about the club.
-
-* User can join a course.
-
-* News page.
+This project is designed to be working as a single-page-application. Application will run from the backend domain using a production build of the frontend domain. To get started read more on [Backend README](https://github.com/macwille/club-webstore/tree/main/backend)
 
 ## Documents
 
 [Working Hours](https://github.com/macwille/club-webstore/blob/main/documents/work-hours.md)
-
-#### Helpers
-
-`git subtree push --prefix backend heroku master`
