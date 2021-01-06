@@ -1,4 +1,6 @@
 import React from 'react'
+import { TITLE } from '../../config'
+import { Helmet } from 'react-helmet'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoginUser } from '../../reducers/loginReducer'
@@ -39,6 +41,9 @@ const Login = () => {
 
   return (
     <Container>
+      <Helmet >
+        <title>Login - {TITLE}</title>
+      </Helmet>
       <Box pb={8}>
         <Typography variant="h4">Login</Typography>
       </Box>

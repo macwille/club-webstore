@@ -1,4 +1,6 @@
 import React from 'react'
+import { TITLE } from '../../config'
+import { Helmet } from 'react-helmet'
 import { Box, Button, TextField, Typography, Grid, Container } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import { useField } from '../../hooks/inputFields'
@@ -42,7 +44,6 @@ const RegisterForm = () => {
     }
     try {
       userService.create(newUser).then(response => {
-        console.log('Added user', response)
         dispatch(setLoginUser(response.username))
         history.push('/')
       })
@@ -61,6 +62,9 @@ const RegisterForm = () => {
 
   return (
     <Container>
+      <Helmet >
+        <title>Register - {TITLE}</title>
+      </Helmet>
       <Box pb={8}>
         <Typography variant="h4">Register</Typography>
       </Box>

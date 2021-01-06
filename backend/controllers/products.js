@@ -1,4 +1,5 @@
 const productRouter = require('express').Router()
+const logger = require('../util/logger')
 const Product = require('../models/product')
 
 productRouter.get('/', async (request, response) => {
@@ -15,7 +16,7 @@ productRouter.post('/', async (request, response) => {
     euros: body.euros,
     cents: body.cents,
   })
-  console.log('Saving product', product)
+  logger.info('Saving product', product)
   const savedProduct = await product.save()
   response.json(savedProduct)
 

@@ -17,7 +17,6 @@ export const clearCart = () => {
 }
 
 const cartReducer = (state = [], action) => {
-  console.log('Action', action)
   switch (action.type) {
   case 'ADD_ITEM':
     return state.concat(action.item)

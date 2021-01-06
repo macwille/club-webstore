@@ -21,7 +21,7 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
     logger.info('connected to MongoDB')
   })
   .catch((error) => {
-    console.log('error connection to MongoDB:', error.message)
+    logger.info('error connection to MongoDB:', error.message)
   })
 
 app.use(cors())
@@ -33,8 +33,12 @@ app.use('/api/products', productRouter)
 app.use('/api/courses', coursesRouter)
 app.use(express.static(path.join(__dirname, 'build')))
 
-app.get('/', (request, response) => {
-  response.sendFile(path.join(__dirname, 'build', 'index.html'))
+app.get('/*', (request, response) => {
+  response.sendFile(path.join(__dirname, './build/index.html'), (error) => {
+    if (error) {
+      response.status(500).send(error)
+    }
+  })
 })
 
 if (process.env.NODE_ENV === 'test') {

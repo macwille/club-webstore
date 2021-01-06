@@ -1,18 +1,18 @@
 const bcrypt = require('bcrypt')
 const loginRouter = require('express').Router()
+const logger = require('../util/logger')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
 loginRouter.post('/', async (request, response) => {
   const body = request.body
-
-  console.log('Login router', body)
   const user = await User.findOne({ username: body.username })
   const passwordCorrect = user === null
     ? false
     : await bcrypt.compare(body.password, user.passwordHash)
 
   if (!(user && passwordCorrect)) {
+    logger.info('Credentials failed')
     return response.status(401).json({
       error: 'Invalid username or password'
     })

@@ -8,7 +8,6 @@ courseRouter.get('/', async (request, response) => {
 
 courseRouter.post('/', async (request, response) => {
   const body = request.body
-  console.log('Create Course', body)
 
   const course = new Course({
     name: body.name,
@@ -18,7 +17,6 @@ courseRouter.post('/', async (request, response) => {
     cents: body.cents,
     trainer: body.trainer
   })
-  console.log('Saving course', course)
   const savedCourse = await course.save()
   response.json(savedCourse)
 })

@@ -1,17 +1,16 @@
 import React from 'react'
 import { Box, Paper, Typography } from '@material-ui/core'
-import PropTypes from 'prop-types'
+import { TITLE } from '../config'
 import Navigation from './Navigation'
 
-const MainHeader = ({ title }) => {
-  const setTitle = title ? title : 'PLACEHOLDER'
+const MainHeader = () => {
 
   return (
     <Paper color="primary">
       <Box p={3}>
         <Box py={8}>
           <Typography variant="h1" align="center" paragraph >
-            {setTitle}
+            {TITLE}
           </Typography>
         </Box>
         <Navigation />
@@ -20,8 +19,5 @@ const MainHeader = ({ title }) => {
   )
 }
 
-MainHeader.propTypes = {
-  title: PropTypes.string
-}
 
 export default MainHeader

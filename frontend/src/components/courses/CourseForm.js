@@ -15,9 +15,6 @@ const CourseForm = ({ courses, setCourses }) => {
   const euros = useField('number')
   const cents = useField('number')
 
-  console.log('Users', users)
-  console.log('Selected', selectedUser)
-
   const handleSubmit = (event) => {
     event.preventDefault()
     const newCourse = {
@@ -29,7 +26,6 @@ const CourseForm = ({ courses, setCourses }) => {
     }
     try {
       courseService.create(newCourse).then(response => {
-        console.log('Added course', response)
         setCourses(courses.concat(response))
       })
     } catch (error) {

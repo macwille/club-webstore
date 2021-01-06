@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { TITLE } from '../../config'
+import { Helmet } from 'react-helmet'
 import { AppBar, Tabs, Tab, Box, Typography } from '@material-ui/core'
 import CourseList from './CourseList'
 import courseService from '../../services/courses'
@@ -44,6 +46,9 @@ const Courses = () => {
 
   return (
     <Box>
+      <Helmet >
+        <title>Courses - {TITLE}</title>
+      </Helmet>
       <AppBar color="primary" position="static">
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Courses" />

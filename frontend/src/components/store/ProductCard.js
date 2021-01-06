@@ -29,7 +29,6 @@ const Product = ({ product }) => {
   const handleClick = (event) => {
     event.preventDefault()
     dispatch(addItem(product))
-    console.log('Add product to cart:', product)
   }
 
   return (

@@ -21,14 +21,11 @@ const useStyles = makeStyles({
 })
 
 const CourseCard = ({ course }) => {
-  console.log('Course', course)
   const classes = useStyles()
 
   const handleClick = (event) => {
     event.preventDefault()
-    console.log('Add product to cart:', course)
   }
-
 
   return (
     <Card className={classes.courseCard}>

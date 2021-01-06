@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const userRouter = require('express').Router()
+const logger = require('../util/logger')
 const User = require('../models/user')
 
 userRouter.get('/', async (request, response) => {
@@ -21,26 +22,23 @@ userRouter.post('/', async (request, response) => {
     email: body.email,
     passwordHash: passwordHash,
   })
-  console.log('Saving user', user)
   const savedUser = await user.save()
   response.json(savedUser)
 
 })
 
 userRouter.put('/:id', (request, response) => {
-  console.log('users get :id')
   const body = request.body
 
   const user = {
     ...body
   }
-  console.log('request user:', user)
 
   User.findByIdAndUpdate(request.params.id, user, { new: true })
     .then(updated => {
       response.json(updated.toJSON())
     })
-    .catch(error => console.log(error))
+    .catch(error => logger.error(error))
 })
 
 module.exports = userRouter

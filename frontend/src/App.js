@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react'
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom'
 import { Container, CssBaseline, ThemeProvider } from '@material-ui/core'
 import MainHeader from './components/MainHeader'
 import MainBody from './components/MainBody'
@@ -18,17 +21,17 @@ const App = () => {
     }
   }, [dispatch])
 
-  console.log('App using theme:', theme)
-
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Container>
-        <MainHeader title='Club Webstore' gutterBottom />
-        <MainBody />
-        <Footer />
-      </Container>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Container>
+          <MainHeader gutterBottom />
+          <MainBody />
+          <Footer />
+        </Container>
+      </ThemeProvider>
+    </Router>
   )
 }
 

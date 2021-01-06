@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { TITLE } from '../../config'
+import { Helmet } from 'react-helmet'
 import { AppBar, Box, Typography, Tabs, Tab } from '@material-ui/core'
 import productService from '../../services/products'
 import ProductForm from './ProductForm'
@@ -44,6 +46,9 @@ const Store = () => {
 
   return (
     <Box>
+      <Helmet >
+        <title>Store - {TITLE}</title>
+      </Helmet>
       <AppBar color="primary" position="static">
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Store" />
