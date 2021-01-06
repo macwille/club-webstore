@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoginUser } from '../../reducers/loginReducer'
-import { Button, Box, Container, TextField, Typography } from '@material-ui/core'
+import { Button, Box, Container, TextField, Typography, FormControl } from '@material-ui/core'
 import { useField } from '../../hooks/inputFields'
 import loginService from '../../services/login'
 
@@ -42,15 +42,23 @@ const Login = () => {
       <Container>
         <Typography variant="h4" paragraph>Login</Typography>
         <form onSubmit={handleSubmit}>
-          <Typography paragraph={true}>
-            <TextField label="Username" variant="outlined" {...username} clear={null} required />
-            <Button color="primary" onClick={username.clear}>Clear</Button>
-          </Typography>
-          <Typography paragraph={true}>
-            <TextField label="Password" variant="outlined" {...password} clear={null} required />
-            <Button color="primary" onClick={password.clear}>Clear</Button>
-          </Typography>
-          <Button variant="contained" color="primary" type="submit">Login</Button>
+          <FormControl>
+            <div>
+              <TextField label="Username" variant="outlined" {...username} clear={null} required />
+              <Button color="primary" onClick={username.clear}>Clear</Button>
+            </div>
+          </FormControl>
+          <FormControl>
+            <div>
+              <TextField label="Password" variant="outlined" {...password} clear={null} required />
+              <Button color="primary" onClick={password.clear}>Clear</Button>
+            </div>
+          </FormControl>
+          <FormControl>
+            <div>
+              <Button variant="contained" color="primary" type="submit">Login</Button>
+            </div>
+          </FormControl>
         </form>
       </Container >
     </Box>

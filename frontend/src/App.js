@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container, ThemeProvider } from '@material-ui/core'
+import { Container, CssBaseline, ThemeProvider } from '@material-ui/core'
 import MainHeader from './components/MainHeader'
 import MainBody from './components/MainBody'
 import { useDispatch } from 'react-redux'
@@ -21,6 +21,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline/>
       <Container>
         <MainHeader title='Club Webstore' gutterBottom />
         <MainBody />
