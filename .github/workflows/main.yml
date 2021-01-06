@@ -37,7 +37,14 @@ jobs:
       - name: build ui
         run: npm run build:ui
         working-directory: backend
-      - name: Add backend remote origin
-        run: git remote add heroku https://heroku:${{ secrets.HEROKU_TOKEN }}@git.heroku.com/club-webstore.git
-      - name: Deploy backend to Heroku
-        run: git subtree push --prefix backend heroku master
+      - name: Deploy backend
+        uses: akhileshns/heroku-deploy@v3.6.8
+        with:
+          heroku_api_key: ${{secrets.HEROKU_TOKEN}}
+          heroku_app_name: "club-webstore"
+          heroku_email: "manninen94@gmail.com"
+          appdir: "backend"
+        env:
+          MONGODB_URI: ${{secrets.MONGODB_URI}}
+          HD_SECRET: ${{secrets.SECRET}}
+          HD_APP_BASE: "backend"
