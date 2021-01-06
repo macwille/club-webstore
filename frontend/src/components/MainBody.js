@@ -1,17 +1,25 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
 import { Paper } from '@material-ui/core'
-import Courses from './Courses'
+import Courses from './courses/Courses'
 import Store from './store/Store'
 import RegisterForm from './users/RegisterForm'
 import Login from './users/Login'
 import About from './About'
-import Footer from './Footer'
+
+const useStyles = makeStyles({
+  mainBody: {
+    minHeight: '40em',
+    marginTop: '2em'
+  }
+})
 
 const MainBody = () => {
+  const classes = useStyles()
 
   return (
-    <Paper className="main-body-box">
+    <Paper className={classes.mainBody}>
       <Switch>
         <Route path="/courses">
           <Courses />
@@ -29,7 +37,6 @@ const MainBody = () => {
           <About />
         </Route>
       </Switch>
-      <Footer />
     </Paper>
   )
 }

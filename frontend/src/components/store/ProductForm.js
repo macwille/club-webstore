@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Typography, Button, TextField } from '@material-ui/core'
+import { Container, Box, Button, TextField, Grid } from '@material-ui/core'
 import productService from '../../services/products'
 import { useField } from '../../hooks/inputFields'
 
@@ -30,20 +30,31 @@ const ProductForm = ({ products, setProducts }) => {
 
   return (
     <Box>
-      <form onSubmit={handleSubmit}>
-        <Typography variant="h6">Create new</Typography>
-        <Typography paragraph={true}>
-          <TextField label="Name" variant="outlined" {...name} clear={null} required />
-          <Button color="primary" size="medium" onClick={name.clear}>Clear</Button>
-          <TextField label="Description" variant="outlined" {...description} clear={null} required />
-          <Button color="primary" size="small" onClick={description.clear}>Clear</Button>
-          <TextField label="Euros" variant="outlined" {...euros} clear={null} min="0" required />
-          <Button color="primary" size="small" onClick={euros.clear}>Clear</Button>
-          <TextField label="Cents" variant="outlined" {...cents} clear={null} min="0" max="99" required />
-          <Button color="primary" size="small" onClick={cents.clear}>Clear</Button>
-          <Button variant="contained" color="primary" type="submit">Submit</Button>
-        </Typography>
-      </form>
+      <Container>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={5}>
+            <Grid item xs={12}>
+              <TextField label="Name" variant="outlined" {...name} clear={null} fullWidth required />
+              <Button color="primary" size="small" onClick={name.clear}>Clear</Button>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField label="Description" variant="outlined" {...description} clear={null} fullWidth required />
+              <Button color="primary" size="small" onClick={description.clear}>Clear</Button>
+            </Grid>
+            <Grid item xs={3}>
+              <TextField label="Euros" variant="outlined" {...euros} clear={null} min="0" required />
+              <Button color="primary" size="small" onClick={euros.clear}>Clear</Button>
+            </Grid>
+            <Grid item xs={3}>
+              <TextField label="Cents" variant="outlined" {...cents} clear={null} min="0" max="99" required />
+              <Button color="primary" size="small" onClick={cents.clear}>Clear</Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Button variant="contained" color="primary" type="submit">Create</Button>
+            </Grid>
+          </Grid>
+        </form>
+      </Container>
     </Box>
   )
 }

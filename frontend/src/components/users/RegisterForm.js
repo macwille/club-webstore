@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Button, TextField, Typography } from '@material-ui/core'
+import { Box, Button, TextField, Typography, Grid, Container } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import { useField } from '../../hooks/inputFields'
 import userService from '../../services/users'
@@ -18,6 +18,16 @@ const RegisterForm = () => {
   const address = useField('text')
   const postcode = useField('text')
   const email = useField('email')
+
+  const handleClear = (event) => {
+    username.clear(event)
+    password.clear(event)
+    firstname.clear(event)
+    lastname.clear(event)
+    address.clear(event)
+    postcode.clear(event)
+    email.clear(event)
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -50,30 +60,42 @@ const RegisterForm = () => {
   }
 
   return (
-    <Box>
-      <Container>
-        <form onSubmit={handleSubmit} autoComplete="off">
-          <Typography variant="h4" paragraph>Register</Typography>
-          <Typography paragraph={true}>
-            <TextField label="Username" variant="outlined" {...username} clear={null} required />
-            <Button color="primary" onClick={username.clear}>Clear</Button>
-            <TextField label="Password" variant="outlined" {...password} clear={null} required />
-            <Button color="primary" onClick={password.clear}>Clear</Button>
+    <Container>
+      <Box pb={8}>
+        <Typography variant="h4">Register</Typography>
+      </Box>
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <Grid container spacing={6}>
+          <Grid item xs={12}>
+            <TextField label="Username" variant="outlined" {...username} clear={null} autoFocus fullWidth required />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField label="Password" variant="outlined" {...password} clear={null} fullWidth required />
+          </Grid>
+          <Grid item xs={6}>
             <TextField label="First name" variant="outlined" {...firstname} clear={null} required />
-            <Button color="primary" onClick={firstname.clear}>Clear</Button>
+          </Grid>
+          <Grid item xs={6}>
             <TextField label="Last name" variant="outlined" {...lastname} clear={null} required />
-            <Button color="primary" onClick={lastname.clear}>Clear</Button>
+          </Grid>
+          <Grid item xs={6}>
             <TextField label="Address" variant="outlined" {...address} clear={null} />
-            <Button color="primary" onClick={address.clear}>Clear</Button>
+          </Grid>
+          <Grid item xs={6}>
             <TextField label="Postcode" variant="outlined" {...postcode} clear={null} />
-            <Button color="primary" onClick={postcode.clear}>Clear</Button>
+          </Grid>
+          <Grid item xs={12}>
             <TextField label="Email" variant="outlined" {...email} clear={null} />
-            <Button color="primary" onClick={email.clear}>Clear</Button>
+          </Grid>
+          <Grid item xs={6}>
             <Button variant="contained" color="primary" type="submit">Submit</Button>
-          </Typography>
-        </form>
-      </Container>
-    </Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Button onClick={handleClear} variant="contained" color="primary">Clear</Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Container>
   )
 
 }

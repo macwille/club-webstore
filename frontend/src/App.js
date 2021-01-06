@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Container, CssBaseline, ThemeProvider } from '@material-ui/core'
 import MainHeader from './components/MainHeader'
 import MainBody from './components/MainBody'
+import Footer from './components/Footer'
 import { useDispatch } from 'react-redux'
 import { setLoginUser } from './reducers/loginReducer'
 import theme from './theme'
@@ -21,10 +22,11 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline/>
+      <CssBaseline />
       <Container>
         <MainHeader title='Club Webstore' gutterBottom />
         <MainBody />
+        <Footer />
       </Container>
     </ThemeProvider>
   )

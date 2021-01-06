@@ -1,22 +1,22 @@
-import { Paper, Box, Container, Typography } from '@material-ui/core'
-import PropTypes from 'prop-types'
 import React from 'react'
+import { Box, Paper, Typography } from '@material-ui/core'
+import PropTypes from 'prop-types'
 import Navigation from './Navigation'
 
 const MainHeader = ({ title }) => {
   const setTitle = title ? title : 'PLACEHOLDER'
 
   return (
-    <Box color="primary"pb="2em">
-      <Paper color="primary">
-        <Container>
+    <Paper color="primary">
+      <Box p={3}>
+        <Box py={8}>
           <Typography variant="h1" align="center" paragraph >
             {setTitle}
           </Typography>
-        </Container>
+        </Box>
         <Navigation />
-      </Paper>
-    </Box>
+      </Box>
+    </Paper>
   )
 }
 

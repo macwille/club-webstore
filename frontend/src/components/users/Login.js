@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoginUser } from '../../reducers/loginReducer'
-import { Button, Box, Container, TextField, Typography, FormControl } from '@material-ui/core'
+import { Button, Box, Container, TextField, Typography, Grid } from '@material-ui/core'
 import { useField } from '../../hooks/inputFields'
 import loginService from '../../services/login'
 
@@ -38,30 +38,26 @@ const Login = () => {
   }
 
   return (
-    <Box>
-      <Container>
-        <Typography variant="h4" paragraph>Login</Typography>
-        <form onSubmit={handleSubmit}>
-          <FormControl>
-            <div>
-              <TextField label="Username" variant="outlined" {...username} clear={null} required />
-              <Button color="primary" onClick={username.clear}>Clear</Button>
-            </div>
-          </FormControl>
-          <FormControl>
-            <div>
-              <TextField label="Password" variant="outlined" {...password} clear={null} required />
-              <Button color="primary" onClick={password.clear}>Clear</Button>
-            </div>
-          </FormControl>
-          <FormControl>
-            <div>
-              <Button variant="contained" color="primary" type="submit">Login</Button>
-            </div>
-          </FormControl>
-        </form>
-      </Container >
-    </Box>
+    <Container>
+      <Box pb={8}>
+        <Typography variant="h4">Login</Typography>
+      </Box>
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={6}>
+          <Grid item xs={12}>
+            <TextField label="Username" variant="outlined" {...username} clear={null} autoFocus fullWidth required />
+            <Button color="primary" onClick={username.clear}>Clear</Button>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField label="Password" variant="outlined" {...password} clear={null} fullWidth required />
+            <Button color="primary" onClick={password.clear}>Clear</Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained" color="primary" type="submit">Login</Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Container>
   )
 }
 

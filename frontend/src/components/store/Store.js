@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { AppBar, Box, Container, Typography, Tabs, Tab, CircularProgress } from '@material-ui/core'
+import { AppBar, Box, Typography, Tabs, Tab } from '@material-ui/core'
 import productService from '../../services/products'
 import ProductForm from './ProductForm'
-import Product from './Product'
+import ProductList from './ProductList'
+import Cart from './Cart'
 
 const TabPanel = (props) => {
   // eslint-disable-next-line react/prop-types
@@ -43,32 +44,24 @@ const Store = () => {
 
   return (
     <Box>
-      <AppBar color="secondary" position="static">
+      <AppBar color="primary" position="static">
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Store" />
           <Tab label="Create" />
+          <Tab label="Cart" />
         </Tabs>
       </AppBar>
-      <Container>
+      <Box p={3} pt={8}>
         <TabPanel value={value} index={0}>
-          <Box>
-            {products ?
-              <ul>
-                {products.map(p =>
-                  <li key={p.id}>
-                    <Product product={p} />
-                  </li>
-                )}
-              </ul>
-              :
-              <CircularProgress />
-            }
-          </Box>
+          <ProductList products={products} />
         </TabPanel>
         <TabPanel value={value} index={1}>
           < ProductForm products={products} setProducts={setProducts} />
         </TabPanel>
-      </Container>
+        <TabPanel value={value} index={2}>
+          <Cart />
+        </TabPanel>
+      </Box>
     </Box >
   )
 }
