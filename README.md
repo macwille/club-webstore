@@ -14,9 +14,13 @@ Application is running on Heroku server here: [Heroku](https://club-webstore.her
 
 ## Features
 
-### Done
+### Started
 
 * User can register and login.
+
+* Store page.
+
+* Courses page
 
 ### Planned
 
@@ -24,10 +28,12 @@ Application is running on Heroku server here: [Heroku](https://club-webstore.her
 
 * User can join a course.
 
-* Web store.
-
 * News page.
 
 ## Documents
 
 [Working Hours](https://github.com/macwille/club-webstore/blob/main/documents/work-hours.md)
+
+#### Helpers
+
+`git subtree push --prefix backend heroku master`
