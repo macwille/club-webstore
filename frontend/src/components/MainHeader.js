@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Box, Paper, Typography } from '@material-ui/core'
 import { TITLE } from '../config'
 import Navigation from './Navigation'
 
-const MainHeader = () => {
+const MainHeader = ({ darkmode, handleDarkmode }) => {
 
   return (
     <Paper color="primary">
@@ -13,10 +14,15 @@ const MainHeader = () => {
             {TITLE}
           </Typography>
         </Box>
-        <Navigation />
+        <Navigation darkmode={darkmode} handleDarkmode={handleDarkmode} />
       </Box>
     </Paper>
   )
+}
+
+MainHeader.propTypes = {
+  darkmode: PropTypes.bool,
+  handleDarkmode: PropTypes.func
 }
 
 
