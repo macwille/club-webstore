@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, CircularProgress, Grid } from '@material-ui/core'
-import ProductCard from './ProductCard'
+import Course from './CourseCard'
 
-const ProductList = ({ products }) => {
+const CourseList = ({ courses }) => {
 
-  if (!products) {
+  if (!courses) {
     return (
       <Box>
         <CircularProgress />
@@ -16,9 +16,9 @@ const ProductList = ({ products }) => {
   return (
     <Box>
       <Grid container spacing={3} justify="flex-start" alignItems="baseline" direction="row">
-        {products.map(p =>
-          <Grid key={p.id} item xs={6} sm={3}>
-            <ProductCard product={p} />
+        {courses.map(c =>
+          <Grid key={c.id} item xs={6} sm={3}>
+            <Course course={c} />
           </Grid>
         )}
       </Grid>
@@ -26,8 +26,8 @@ const ProductList = ({ products }) => {
   )
 }
 
-ProductList.propTypes = {
-  products: PropTypes.arrayOf(Object)
+CourseList.propTypes = {
+  courses: PropTypes.arrayOf(Object)
 }
 
-export default ProductList
+export default CourseList

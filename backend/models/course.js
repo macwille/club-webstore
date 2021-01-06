@@ -8,7 +8,8 @@ const courseSchema = mongoose.Schema({
   },
   description: String,
   startDate: Date,
-  price: Number,
+  euros: Number,
+  cents: Number,
   paricipants: [
     {
       type: mongoose.Schema.Types.ObjectId,

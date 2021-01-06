@@ -3,21 +3,13 @@ import { API_URL } from '../config'
 
 const baseUrl = API_URL + '/courses'
 
-
 const getAll = () => {
-  const req = axios.get(baseUrl)
-  return req.then(res => res.data)
+  const request = axios.get(baseUrl)
+  return request.then(response => response.data)
 }
 
-const create = async newObject => {
-  let token = localStorage.getItem('token')
-  if (!token) token = ''
-  const config = {
-    headers: {
-      'Authorization': 'bearer ' + token
-    }
-  }
-  const response = await axios.post(baseUrl, newObject, config)
+const create = async newCourse => {
+  const response = await axios.post(baseUrl, newCourse)
   return response.data
 }
 

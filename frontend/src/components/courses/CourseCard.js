@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux'
-import { addItem } from '../../reducers/cartReducer'
 import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles({
-  productCard: {
+  courseCard: {
     minWidth: 275,
   },
   bullet: {
@@ -22,35 +20,37 @@ const useStyles = makeStyles({
   },
 })
 
-const Product = ({ product }) => {
+const CourseCard = ({ course }) => {
+  console.log('Course', course)
   const classes = useStyles()
-  const dispatch = useDispatch()
 
   const handleClick = (event) => {
     event.preventDefault()
-    dispatch(addItem(product))
-    console.log('Add product to cart:', product)
+    console.log('Add product to cart:', course)
   }
 
+
   return (
-    <Card className={classes.productCard}>
+    <Card className={classes.courseCard}>
       <CardContent>
-        <Typography variant="h6">
-          {product.name}
+        <Typography variant="h6" paragraph>
+          {course.name} <br />
+          {course.euros},{course.cents}€
         </Typography>
-        <Typography >
-          {product.euros},{product.cents}€
+        <Typography color="textSecondary">
+          Description: {course.name}<br />
+          Trainer: {course.trainer.id}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={handleClick} size="small">Add to Cart</Button>
+        <Button onClick={handleClick} size="small">Sign Up</Button>
       </CardActions>
     </Card>
   )
 }
 
-Product.propTypes = {
-  product: PropTypes.object,
+CourseCard.propTypes = {
+  course: PropTypes.object,
 }
 
-export default Product
+export default CourseCard

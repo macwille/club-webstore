@@ -10,6 +10,7 @@ const logger = require('./util/logger')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const productRouter = require('./controllers/products')
+const coursesRouter = require('./controllers/courses')
 
 const mongoose = require('mongoose')
 
@@ -29,6 +30,7 @@ app.use(bodyParser.json())
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/products', productRouter)
+app.use('/api/courses', coursesRouter)
 app.use(express.static(path.join(__dirname, 'build')))
 
 app.get('/', (request, response) => {

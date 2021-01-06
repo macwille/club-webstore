@@ -15,7 +15,7 @@ productRouter.post('/', async (request, response) => {
     euros: body.euros,
     cents: body.cents,
   })
-  console.log('Saving user', product)
+  console.log('Saving product', product)
   const savedProduct = await product.save()
   response.json(savedProduct)
 
