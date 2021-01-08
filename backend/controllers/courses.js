@@ -2,7 +2,7 @@ const courseRouter = require('express').Router()
 const Course = require('../models/course')
 
 courseRouter.get('/', async (request, response) => {
-  const courses = await Course.find({}).populate('participants').populate('trainer', { trainer: 1 })
+  const courses = await Course.find({}).populate('trainer')
   response.json(courses.map(map => map.toJSON()))
 })
 

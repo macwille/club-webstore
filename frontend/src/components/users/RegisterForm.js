@@ -47,6 +47,7 @@ const RegisterForm = () => {
         dispatch(setLoginUser(response.username))
         history.push('/')
       })
+      handleClear(event)
     } catch (error) {
       console.log(error)
     }
@@ -68,7 +69,7 @@ const RegisterForm = () => {
       <Box pb={8}>
         <Typography variant="h4">Register</Typography>
       </Box>
-      <form onSubmit={handleSubmit} autoComplete="off">
+      <form onSubmit={handleSubmit}>
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <TextField label="Username" variant="outlined" {...username} clear={null} autoFocus fullWidth required />
@@ -77,24 +78,24 @@ const RegisterForm = () => {
             <TextField label="Password" variant="outlined" {...password} clear={null} fullWidth required />
           </Grid>
           <Grid item xs={6}>
-            <TextField label="First name" variant="outlined" {...firstname} clear={null} required />
+            <TextField label="First name" variant="outlined" {...firstname} clear={null} fullWidth required />
           </Grid>
           <Grid item xs={6}>
-            <TextField label="Last name" variant="outlined" {...lastname} clear={null} required />
+            <TextField label="Last name" variant="outlined" {...lastname} clear={null} fullWidth required />
           </Grid>
-          <Grid item xs={6}>
-            <TextField label="Address" variant="outlined" {...address} clear={null} />
+          <Grid item xs={8}>
+            <TextField label="Address" variant="outlined" {...address} clear={null} fullWidth />
           </Grid>
-          <Grid item xs={6}>
-            <TextField label="Postcode" variant="outlined" {...postcode} clear={null} />
+          <Grid item xs={3}>
+            <TextField label="Postcode" variant="outlined" {...postcode} clear={null} fullWidth />
           </Grid>
           <Grid item xs={12}>
-            <TextField label="Email" variant="outlined" {...email} clear={null} />
+            <TextField label="Email" variant="outlined" {...email} clear={null} fullWidth />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={2}>
             <Button variant="contained" color="primary" type="submit">Submit</Button>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={2}>
             <Button onClick={handleClear} variant="contained" color="primary">Clear</Button>
           </Grid>
         </Grid>

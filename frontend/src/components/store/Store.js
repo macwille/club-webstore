@@ -52,8 +52,8 @@ const Store = () => {
       <AppBar color="primary" position="static">
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Store" />
-          <Tab label="Create" />
           <Tab label="Cart" />
+          <Tab label="Create" />
         </Tabs>
       </AppBar>
       <Box p={3} pt={8}>
@@ -61,10 +61,10 @@ const Store = () => {
           <ProductList products={products} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          < ProductForm products={products} setProducts={setProducts} />
+          <Cart />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Cart />
+          < ProductForm products={products} setProducts={setProducts} />
         </TabPanel>
       </Box>
     </Box >

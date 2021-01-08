@@ -48,16 +48,16 @@ const Login = () => {
         <Typography variant="h4">Login</Typography>
       </Box>
       <form onSubmit={handleSubmit}>
-        <Grid container spacing={6}>
-          <Grid item xs={12}>
+        <Grid container spacing={3} direction="column">
+          <Grid item >
             <TextField label="Username" variant="outlined" {...username} clear={null} autoFocus fullWidth required />
             <Button color="primary" onClick={username.clear}>Clear</Button>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item>
             <TextField label="Password" variant="outlined" {...password} clear={null} fullWidth required />
             <Button color="primary" onClick={password.clear}>Clear</Button>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item >
             <Button variant="contained" color="primary" type="submit">Login</Button>
           </Grid>
         </Grid>

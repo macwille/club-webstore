@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Box, Typography, Container } from '@material-ui/core'
+import { Box, Typography } from '@material-ui/core'
 import ProductList from './ProductList'
 
 const Cart = () => {
@@ -8,11 +8,8 @@ const Cart = () => {
 
   return (
     <Box>
-      <Container>
-        <Typography variant="h4" paragraph>Your Cart</Typography>
-        <Typography>You have {products.length} items in your cart.</Typography>
-        <ProductList products={products} />
-      </Container>
+      <Typography variant="h4" paragraph>You have {products.length} items in your cart.</Typography>
+      <ProductList products={products} />
     </Box>
   )
 }

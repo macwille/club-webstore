@@ -3,28 +3,23 @@ import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../../reducers/cartReducer'
 import { makeStyles } from '@material-ui/core/styles'
-import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
+import { Card, CardContent, CardActions, CardActionArea, Button, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles({
-  courseCard: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
+  productCard: {
+    minWidth: 260,
+    maxWidth: 260,
+    minHeight: 300,
+    maxHeight: 300,
+  }
 })
 
 const Product = ({ product }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
+
+  const euroString = String(product.euros)
+  const centString = product.cents < 10 ? `0${product.cents}` : String(product.cents)
 
   const handleClick = (event) => {
     event.preventDefault()
@@ -38,12 +33,14 @@ const Product = ({ product }) => {
           {product.name}
         </Typography>
         <Typography >
-          {product.euros},{product.cents}€
+          {euroString},{centString}€
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button onClick={handleClick} size="small">Add to Cart</Button>
-      </CardActions>
+      <CardActionArea>
+        <CardActions>
+          <Button color="primary" onClick={handleClick} size="small">Add to Cart</Button>
+        </CardActions>
+      </CardActionArea>
     </Card>
   )
 }
