@@ -10,8 +10,8 @@ import About from './About'
 
 const useStyles = makeStyles({
   mainBody: {
-    minHeight: '40em',
-    marginTop: '2em'
+    minHeight: '60em',
+    marginTop: '6em'
   }
 })
 

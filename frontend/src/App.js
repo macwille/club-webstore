@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
-import { Container, CssBaseline, ThemeProvider, createMuiTheme } from '@material-ui/core'
-import MainHeader from './components/MainHeader'
+import { Container, CssBaseline, ThemeProvider } from '@material-ui/core'
+import Navigation from './components/Navigation'
 import MainBody from './components/MainBody'
+import Notification from './components/Notification'
 import Footer from './components/Footer'
 import { useDispatch } from 'react-redux'
 import { setLoginUser } from './reducers/loginReducer'
+import theme from './theme'
 
 const App = () => {
   const dispatch = useDispatch()
   const [darkmode, setDarkmode] = useState(false)
+
+  const useTheme = theme(darkmode)
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
@@ -21,29 +25,17 @@ const App = () => {
     }
   }, [dispatch])
 
-  const handleDarkmode = (event) => {
-    event.preventDefault()
-    setDarkmode(!darkmode)
+  const handleDarkmode = () => {
+    setDarkmode((prev) => !prev)
   }
-  useEffect(() => {
-    console.log('Use darkmode?', darkmode)
-  }, [darkmode])
-
-  const theme = React.useMemo(
-    () => createMuiTheme({
-      palette: {
-        type: darkmode ? 'dark' : 'light',
-      },
-    }),
-    [darkmode],
-  )
 
   return (
     <Router>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={useTheme}>
         <CssBaseline />
+        <Navigation darkmode={darkmode} handleDarkmode={handleDarkmode} />
         <Container>
-          <MainHeader gutterBottom darkmode={darkmode} handleDarkmode={handleDarkmode} />
+          <Notification message="test" />
           <MainBody />
           <Footer />
         </Container>

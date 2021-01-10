@@ -7,6 +7,7 @@ import { useField } from '../../hooks/inputFields'
 import userService from '../../services/users'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoginUser } from '../../reducers/loginReducer'
+import { setNotification } from '../../reducers/notificationReducer'
 
 const RegisterForm = () => {
   const user = useSelector(state => state.login)
@@ -47,8 +48,10 @@ const RegisterForm = () => {
         dispatch(setLoginUser(response.username))
         history.push('/')
       })
+      dispatch(setNotification(`Registered user ${newUser.username}`))
       handleClear(event)
     } catch (error) {
+      dispatch(setNotification('Error registering new user'))
       console.log(error)
     }
   }

@@ -3,12 +3,22 @@ import PropTypes from 'prop-types'
 import { Container, Box, Button, TextField, Grid } from '@material-ui/core'
 import productService from '../../services/products'
 import { useField } from '../../hooks/inputFields'
+import { useDispatch } from 'react-redux'
+import { setNotification } from '../../reducers/notificationReducer'
 
 const ProductForm = ({ products, setProducts }) => {
+  const dispatch = useDispatch()
   const name = useField('text')
   const description = useField('text')
   const euros = useField('number')
   const cents = useField('number')
+
+  const handleClear = (event) => {
+    name.clear(event)
+    description.clear(event)
+    euros.clear(event)
+    cents.clear(event)
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -23,7 +33,10 @@ const ProductForm = ({ products, setProducts }) => {
         console.log('Added product', response)
         setProducts(products.concat(response))
       })
+      dispatch(setNotification(`Added product ${newProduct.name}`))
+      handleClear(event)
     } catch (error) {
+      dispatch(setNotification('Error adding new product'))
       console.log(error)
     }
   }
@@ -34,20 +47,20 @@ const ProductForm = ({ products, setProducts }) => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
-              <TextField label="Name" variant="outlined" {...name} clear={null} fullWidth required />
-              <Button color="primary" size="small" onClick={name.clear}>Clear</Button>
+              <TextField label="Name" variant="outlined" {...name} clear={null} autoFocus fullWidth required />
+              <Button color="primary" size="small" tabindex="-1" onClick={name.clear}>Clear</Button>
             </Grid>
             <Grid item xs={12}>
               <TextField label="Description" variant="outlined" {...description} clear={null} fullWidth required />
-              <Button color="primary" size="small" onClick={description.clear}>Clear</Button>
+              <Button color="primary" size="small" tabindex="-1" onClick={description.clear}>Clear</Button>
             </Grid>
             <Grid item xs={3}>
               <TextField label="Euros" variant="outlined" {...euros} clear={null} min="0" required />
-              <Button color="primary" size="small" onClick={euros.clear}>Clear</Button>
+              <Button color="primary" size="small" tabindex="-1" onClick={euros.clear}>Clear</Button>
             </Grid>
             <Grid item xs={3}>
               <TextField label="Cents" variant="outlined" {...cents} clear={null} min="0" max="99" required />
-              <Button color="primary" size="small" onClick={cents.clear}>Clear</Button>
+              <Button color="primary" size="small" tabindex="-1" onClick={cents.clear}>Clear</Button>
             </Grid>
             <Grid item xs={12}>
               <Button variant="contained" color="primary" type="submit">Create</Button>

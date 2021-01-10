@@ -7,6 +7,7 @@ import { setLoginUser } from '../../reducers/loginReducer'
 import { Button, Box, Container, TextField, Typography, Grid } from '@material-ui/core'
 import { useField } from '../../hooks/inputFields'
 import loginService from '../../services/login'
+import { setNotification } from '../../reducers/notificationReducer'
 
 const Login = () => {
   const user = useSelector(state => state.login)
@@ -26,9 +27,11 @@ const Login = () => {
       localStorage.setItem('token', userObject.token)
       window.localStorage.setItem('loggedUser', JSON.stringify(userObject))
       dispatch(setLoginUser(userObject.username))
+      dispatch(setNotification(`Welcome back ${userObject.username}`))
       history.push('/')
     } catch (exception) {
       console.log('Exception logging in', exception)
+      dispatch(setNotification('Wrong username or password'))
     }
   }
   if (user) {
@@ -51,11 +54,11 @@ const Login = () => {
         <Grid container spacing={3} direction="column">
           <Grid item >
             <TextField label="Username" variant="outlined" {...username} clear={null} autoFocus fullWidth required />
-            <Button color="primary" onClick={username.clear}>Clear</Button>
+            <Button color="primary" tabindex="-1" onClick={username.clear}>Clear</Button>
           </Grid>
           <Grid item>
             <TextField label="Password" variant="outlined" {...password} clear={null} fullWidth required />
-            <Button color="primary" onClick={password.clear}>Clear</Button>
+            <Button color="primary" tabindex="-1" onClick={password.clear}>Clear</Button>
           </Grid>
           <Grid item >
             <Button variant="contained" color="primary" type="submit">Login</Button>

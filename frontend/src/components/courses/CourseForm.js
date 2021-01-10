@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Container, Box, Button, TextField, Grid, InputLabel, NativeSelect } from '@material-ui/core'
 import courseService from '../../services/courses'
 import { useField } from '../../hooks/inputFields'
+import { setNotification } from '../../reducers/notificationReducer'
 
 const CourseForm = ({ courses, setCourses }) => {
+  const dispatch = useDispatch()
   const users = useSelector(state => state.users)
   const [selectedUser, setSelected] = useState(null)
   const name = useField('text')
@@ -37,8 +39,10 @@ const CourseForm = ({ courses, setCourses }) => {
       courseService.create(newCourse).then(response => {
         setCourses(courses.concat(response))
       })
+      dispatch(setNotification(`Added course ${newCourse.name}`))
       handleClear(event)
     } catch (error) {
+      dispatch(setNotification('Error adding course'))
       console.log(error)
     }
   }
@@ -53,30 +57,30 @@ const CourseForm = ({ courses, setCourses }) => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
-              <TextField label="Course name" variant="outlined" {...name} clear={null} fullWidth required />
-              <Button color="primary" size="small" onClick={name.clear}>Clear</Button>
+              <TextField label="Course name" variant="outlined" {...name} clear={null} autoFocus fullWidth required />
+              <Button color="primary" size="small" tabindex="-1" onClick={name.clear}>Clear</Button>
             </Grid>
             <Grid item xs={12}>
               <TextField label="Description" variant="outlined" {...description} clear={null} fullWidth required />
-              <Button color="primary" size="small" onClick={description.clear}>Clear</Button>
+              <Button color="primary" size="small" tabindex="-1" onClick={description.clear}>Clear</Button>
             </Grid>
             <Grid item xs={3}>
               <TextField label="Euros" variant="outlined" {...euros} clear={null} min="0" required />
-              <Button color="primary" size="small" onClick={euros.clear}>Clear</Button>
+              <Button color="primary" size="small" tabindex="-1" onClick={euros.clear}>Clear</Button>
             </Grid>
             <Grid item xs={8}>
               <TextField label="Cents" variant="outlined" {...cents} clear={null} min="0" max="99" required />
-              <Button color="primary" size="small" onClick={cents.clear}>Clear</Button>
+              <Button color="primary" size="small" tabindex="-1" onClick={cents.clear}>Clear</Button>
             </Grid>
             <Grid item xs={3}>
               <InputLabel>Date</InputLabel>
               <TextField variant="outlined" {...date} clear={null} min="0" max="99" required />
-              <Button color="primary" size="small" onClick={date.clear}>Clear</Button>
+              <Button color="primary" size="small" tabindex="-1" onClick={date.clear}>Clear</Button>
             </Grid>
             <Grid item xs={8}>
               <InputLabel>Time</InputLabel>
               <TextField variant="outlined" {...time} clear={null} min="0" max="99" required />
-              <Button color="primary" size="small" onClick={time.clear}>Clear</Button>
+              <Button color="primary" size="small" tabindex="-1" onClick={time.clear}>Clear</Button>
             </Grid>
             <Grid item xs={12}>
               <InputLabel>Trainer</InputLabel>

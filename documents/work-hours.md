@@ -8,7 +8,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 
 | Days | Hours |
 | :--  | :---: |
-| 8    | 41    |
+| 9    | 45    |
 
 ### Detailed 
 
@@ -22,6 +22,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 | 5.1      | Added a basic store and products functionality | 7 |
 | 6.1      | Added Crouses page and MUI additions, Actions Deploy to Heroku, Darkmode | 8 |
 | 8.1      | Polished frontend components | 2 |
+| 11.1     | Added notification component with Redux state | 4 | 
 
 
  
