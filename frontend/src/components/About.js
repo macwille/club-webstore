@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { TITLE } from '../config'
 import { Helmet } from 'react-helmet'
-import { Box, Container, Typography, CircularProgress } from '@material-ui/core'
+import { Box, Container, Typography, CircularProgress, Grid } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
-import { initilizeUsers } from '../reducers/userReducer'
+import { getUsers  } from '../reducers/userReducer'
+import UserCard from './users/UserCard'
 
 
 
@@ -11,27 +12,22 @@ const About = () => {
 
   const users = useSelector(state => state.users)
   const dispatch = useDispatch()
-  /*
-    useEffect(() => {
-      userService
-        .getAll()
-        .then(initial => { setUsers(initial) })
-    }, [])
-  */
+
   useEffect(() => {
-    dispatch(initilizeUsers())
+    dispatch(getUsers())
   }, [dispatch])
 
   const renderUsers = () => {
     if (users) {
       return (
-        users.map(user =>
-          <li key={user.id}>
-            <Typography paragraph={true}>
-              {user.username} - {user.firstname} {user.lastname} {user.address}.
-            </Typography>
-          </li>
-        )
+        <Grid container padding={3}>
+          {users.map(user =>
+            <Grid item key={user.id} xs={6}>
+              <UserCard user={user} />
+            </Grid>
+          )
+          }
+        </Grid >
       )
     }
     return (
@@ -46,10 +42,7 @@ const About = () => {
       </Helmet>
       <Container>
         <Typography variant="h4">Users</Typography>
-        <ul>
-
-          {renderUsers()}
-        </ul>
+        {renderUsers()}
       </Container >
     </Box >
   )

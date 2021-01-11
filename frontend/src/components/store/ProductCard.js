@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import { addItem } from '../../reducers/cartReducer'
 import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, CardActions, CardActionArea, Button, Typography } from '@material-ui/core'
+import { removeProduct } from '../../reducers/productReducer'
+import { setNotification } from '../../reducers/notificationReducer'
 
 const useStyles = makeStyles({
   productCard: {
@@ -26,6 +28,15 @@ const Product = ({ product }) => {
     dispatch(addItem(product))
   }
 
+  const handleDelete = (id) => {
+    try {
+      dispatch(removeProduct(id))
+      dispatch(setNotification('Deleted product'))
+    } catch (error) {
+      dispatch(setNotification('Error deleting product'))
+    }
+  }
+
   return (
     <Card className={classes.productCard}>
       <CardContent>
@@ -39,6 +50,7 @@ const Product = ({ product }) => {
       <CardActionArea>
         <CardActions>
           <Button color="primary" onClick={handleClick} size="small">Add to Cart</Button>
+          <Button color="primary" onClick={() => handleDelete(product.id)} size="small">Delete</Button>
         </CardActions>
       </CardActionArea>
     </Card>

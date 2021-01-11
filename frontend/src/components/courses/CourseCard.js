@@ -34,9 +34,10 @@ const CourseCard = ({ course }) => {
         <Typography color="textSecondary" paragraph>
           {course.description}
         </Typography>
-        <Typography color="textPrimary">
-          {course.trainer.firstname} {course.trainer.lastname}
-        </Typography>
+        {course.trainer &&
+          <Typography color="textPrimary">
+            Trainer: {course.trainer.firstname} {course.trainer.lastname}
+          </Typography>}
       </CardContent>
       <CardActionArea>
         <CardActions >

@@ -1,4 +1,5 @@
 const courseRouter = require('express').Router()
+const logger = require('../util/logger')
 const Course = require('../models/course')
 
 courseRouter.get('/', async (request, response) => {
@@ -15,10 +16,33 @@ courseRouter.post('/', async (request, response) => {
     startDate: body.startDate,
     euros: body.euros,
     cents: body.cents,
+    maxParticipants: body.maxParticipants,
     trainer: body.trainer
   })
   const savedCourse = await course.save()
   response.json(savedCourse)
+})
+
+courseRouter.put('/:id', (request, response) => {
+  const body = request.body
+
+  const course = {
+    ...body
+  }
+
+  Course.findByIdAndUpdate(request.params.id, course, { new: true })
+    .then(updated => {
+      response.json(updated.toJSON())
+    })
+    .catch(error => logger.error(error))
+})
+
+courseRouter.delete('/:id', (request, response) => {
+  Course.findByIdAndRemove(request.params.id)
+    .then(() => {
+      response.status(204).end()
+    })
+    .catch(error => logger.error(error))
 })
 
 module.exports = courseRouter

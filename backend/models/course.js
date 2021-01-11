@@ -10,10 +10,17 @@ const courseSchema = mongoose.Schema({
   startDate: Date,
   euros: Number,
   cents: Number,
+  maxParticipants: Number,
   trainer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  participants: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
+  ]
 })
 
 courseSchema.set('toJSON', {

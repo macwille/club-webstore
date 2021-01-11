@@ -6,13 +6,28 @@ const userSchema = mongoose.Schema({
     type: String,
     unique: true
   },
-  role: String,
   firstname: String,
   lastname: String,
   address: String,
   postcode: Number,
-  email: String,
-  passwordHash: String
+  email: {
+    type: String,
+    unique: true
+  },
+  passwordHash: String,
+  role: String,
+  courses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Course'
+    },
+  ],
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product'
+    },
+  ]
 })
 
 userSchema.set('toJSON', {

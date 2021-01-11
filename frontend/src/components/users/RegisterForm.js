@@ -41,7 +41,8 @@ const RegisterForm = () => {
       address: address.value,
       postcode: postcode.value,
       email: email.value,
-      password: password.value
+      password: password.value,
+      role: 'customer',
     }
     try {
       userService.create(newUser).then(response => {

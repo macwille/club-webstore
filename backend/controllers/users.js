@@ -21,6 +21,9 @@ userRouter.post('/', async (request, response) => {
     postcode: body.postcode,
     email: body.email,
     passwordHash: passwordHash,
+    role: body.role,
+    courses: body.courses,
+    products: body.products,
   })
   const savedUser = await user.save()
   response.json(savedUser)
@@ -37,6 +40,14 @@ userRouter.put('/:id', (request, response) => {
   User.findByIdAndUpdate(request.params.id, user, { new: true })
     .then(updated => {
       response.json(updated.toJSON())
+    })
+    .catch(error => logger.error(error))
+})
+
+userRouter.delete('/:id', (request, response) => {
+  User.findByIdAndRemove(request.params.id)
+    .then(() => {
+      response.status(204).end()
     })
     .catch(error => logger.error(error))
 })

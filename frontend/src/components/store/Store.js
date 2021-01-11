@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
 import { AppBar, Box, Typography, Tabs, Tab } from '@material-ui/core'
-import productService from '../../services/products'
 import ProductForm from './ProductForm'
 import ProductList from './ProductList'
 import Cart from './Cart'
+import { getProducts } from '../../reducers/productReducer'
 
 const TabPanel = (props) => {
   // eslint-disable-next-line react/prop-types
@@ -29,16 +30,13 @@ const TabPanel = (props) => {
 }
 
 const Store = () => {
-  const [products, setProducts] = useState(null)
+  const products = useSelector(state => state.products)
+  const dispatch = useDispatch()
   const [value, setValue] = useState(0)
 
   useEffect(() => {
-    productService
-      .getAll()
-      .then(initial => {
-        setProducts(initial)
-      })
-  }, [])
+    dispatch(getProducts())
+  }, [dispatch])
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -64,7 +62,7 @@ const Store = () => {
           <Cart />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          < ProductForm products={products} setProducts={setProducts} />
+          < ProductForm products={products} />
         </TabPanel>
       </Box>
     </Box >

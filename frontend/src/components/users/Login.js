@@ -54,11 +54,11 @@ const Login = () => {
         <Grid container spacing={3} direction="column">
           <Grid item >
             <TextField label="Username" variant="outlined" {...username} clear={null} autoFocus fullWidth required />
-            <Button color="primary" tabindex="-1" onClick={username.clear}>Clear</Button>
+            <Button color="primary" tabIndex="-1" onClick={username.clear}>Clear</Button>
           </Grid>
           <Grid item>
             <TextField label="Password" variant="outlined" {...password} clear={null} fullWidth required />
-            <Button color="primary" tabindex="-1" onClick={password.clear}>Clear</Button>
+            <Button color="primary" tabIndex="-1" onClick={password.clear}>Clear</Button>
           </Grid>
           <Grid item >
             <Button variant="contained" color="primary" type="submit">Login</Button>

@@ -52,11 +52,11 @@ const ProductForm = ({ products, setProducts }) => {
             <Grid item xs={12}>
               <TextField label="Description" variant="outlined" {...description} clear={null} fullWidth required />
             </Grid>
-            <Grid item xs={12} sm={3}>
-              <TextField label="Euros" variant="outlined" {...euros} clear={null} InputProps={{ inputProps: { min: 0 } }} required />
+            <Grid item xs={12} sm={6}>
+              <TextField label="Euros" variant="outlined" {...euros} clear={null} InputProps={{ inputProps: { min: 0 } }} fullWidth required />
             </Grid>
-            <Grid item xs={12} sm={8}>
-              <TextField label="Cents" variant="outlined" {...cents} clear={null} InputProps={{ inputProps: { min: 0, max: 99 } }} required />
+            <Grid item xs={12} sm={6}>
+              <TextField label="Cents" variant="outlined" {...cents} clear={null} InputProps={{ inputProps: { min: 0, max: 99 } }} fullWidth required />
             </Grid>
             <Grid item xs={12} sm={2}>
               <Button variant="contained" color="primary" type="submit">Create</Button>
