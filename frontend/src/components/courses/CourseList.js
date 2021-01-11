@@ -15,9 +15,9 @@ const CourseList = ({ courses }) => {
 
   return (
     <Box>
-      <Grid container spacing={3} justify="flex-start" alignItems="baseline" direction="row">
+      <Grid container spacing={1} justify="flex-start" alignItems="baseline" direction="row">
         {courses.map(c =>
-          <Grid key={c.id} item xs={6} sm={3}>
+          <Grid key={c.id} item xs={12} sm={3}>
             <Course course={c} />
           </Grid>
         )}

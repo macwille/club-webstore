@@ -45,25 +45,24 @@ const ProductForm = ({ products, setProducts }) => {
     <Box>
       <Container>
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={5}>
+          <Grid container spacing={3}>
             <Grid item xs={12}>
               <TextField label="Name" variant="outlined" {...name} clear={null} autoFocus fullWidth required />
-              <Button color="primary" size="small" tabindex="-1" onClick={name.clear}>Clear</Button>
             </Grid>
             <Grid item xs={12}>
               <TextField label="Description" variant="outlined" {...description} clear={null} fullWidth required />
-              <Button color="primary" size="small" tabindex="-1" onClick={description.clear}>Clear</Button>
             </Grid>
-            <Grid item xs={3}>
-              <TextField label="Euros" variant="outlined" {...euros} clear={null} min="0" required />
-              <Button color="primary" size="small" tabindex="-1" onClick={euros.clear}>Clear</Button>
+            <Grid item xs={12} sm={3}>
+              <TextField label="Euros" variant="outlined" {...euros} clear={null} InputProps={{ inputProps: { min: 0 } }} required />
             </Grid>
-            <Grid item xs={3}>
-              <TextField label="Cents" variant="outlined" {...cents} clear={null} min="0" max="99" required />
-              <Button color="primary" size="small" tabindex="-1" onClick={cents.clear}>Clear</Button>
+            <Grid item xs={12} sm={8}>
+              <TextField label="Cents" variant="outlined" {...cents} clear={null} InputProps={{ inputProps: { min: 0, max: 99 } }} required />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={2}>
               <Button variant="contained" color="primary" type="submit">Create</Button>
+            </Grid>
+            <Grid item xs={12} sm={2}>
+              <Button variant="contained" color="light" onClick={handleClear}>Clear</Button>
             </Grid>
           </Grid>
         </form>

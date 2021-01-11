@@ -73,33 +73,33 @@ const RegisterForm = () => {
         <Typography variant="h4">Register</Typography>
       </Box>
       <form onSubmit={handleSubmit}>
-        <Grid container spacing={6}>
+        <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField label="Username" variant="outlined" {...username} clear={null} autoFocus fullWidth required />
           </Grid>
           <Grid item xs={12}>
             <TextField label="Password" variant="outlined" {...password} clear={null} fullWidth required />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField label="First name" variant="outlined" {...firstname} clear={null} fullWidth required />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField label="Last name" variant="outlined" {...lastname} clear={null} fullWidth required />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={12} sm={8}>
             <TextField label="Address" variant="outlined" {...address} clear={null} fullWidth />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} sm={4}>
             <TextField label="Postcode" variant="outlined" {...postcode} clear={null} fullWidth />
           </Grid>
           <Grid item xs={12}>
             <TextField label="Email" variant="outlined" {...email} clear={null} fullWidth />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={12} sm={2}>
             <Button variant="contained" color="primary" type="submit">Submit</Button>
           </Grid>
-          <Grid item xs={2}>
-            <Button onClick={handleClear} variant="contained" color="primary">Clear</Button>
+          <Grid item xs={12} sm={2}>
+            <Button onClick={handleClear} variant="contained" color="light">Clear</Button>
           </Grid>
         </Grid>
       </form>

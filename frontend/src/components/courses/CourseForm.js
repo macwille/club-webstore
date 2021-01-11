@@ -55,32 +55,27 @@ const CourseForm = ({ courses, setCourses }) => {
     <Box>
       <Container>
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={5}>
+          <Grid container spacing={3}>
             <Grid item xs={12}>
               <TextField label="Course name" variant="outlined" {...name} clear={null} autoFocus fullWidth required />
-              <Button color="primary" size="small" tabindex="-1" onClick={name.clear}>Clear</Button>
+
             </Grid>
             <Grid item xs={12}>
               <TextField label="Description" variant="outlined" {...description} clear={null} fullWidth required />
-              <Button color="primary" size="small" tabindex="-1" onClick={description.clear}>Clear</Button>
             </Grid>
-            <Grid item xs={3}>
-              <TextField label="Euros" variant="outlined" {...euros} clear={null} min="0" required />
-              <Button color="primary" size="small" tabindex="-1" onClick={euros.clear}>Clear</Button>
+            <Grid item xs={12} sm={6}>
+              <TextField label="Euros" variant="outlined" {...euros} clear={null} InputProps={{ inputProps: { min: 0 } }} fullWidth required />
             </Grid>
-            <Grid item xs={8}>
-              <TextField label="Cents" variant="outlined" {...cents} clear={null} min="0" max="99" required />
-              <Button color="primary" size="small" tabindex="-1" onClick={cents.clear}>Clear</Button>
+            <Grid item xs={12} sm={6}>
+              <TextField label="Cents" variant="outlined" {...cents} clear={null} InputProps={{ inputProps: { min: 0, max: 99 } }} fullWidth required />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={3}>
               <InputLabel>Date</InputLabel>
-              <TextField variant="outlined" {...date} clear={null} min="0" max="99" required />
-              <Button color="primary" size="small" tabindex="-1" onClick={date.clear}>Clear</Button>
+              <TextField variant="outlined" {...date} clear={null} fullWidth required />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12} sm={3}>
               <InputLabel>Time</InputLabel>
-              <TextField variant="outlined" {...time} clear={null} min="0" max="99" required />
-              <Button color="primary" size="small" tabindex="-1" onClick={time.clear}>Clear</Button>
+              <TextField variant="outlined" {...time} clear={null} fullWidth required />
             </Grid>
             <Grid item xs={12}>
               <InputLabel>Trainer</InputLabel>
@@ -91,8 +86,11 @@ const CourseForm = ({ courses, setCourses }) => {
                 )}
               </NativeSelect>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={2}>
               <Button variant="contained" color="primary" type="submit">Create</Button>
+            </Grid>
+            <Grid item xs={12} sm={2}>
+              <Button variant="contained" color="light" onClick={handleClear}>Clear</Button>
             </Grid>
           </Grid>
         </form>
