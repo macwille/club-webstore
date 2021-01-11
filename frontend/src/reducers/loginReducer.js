@@ -4,6 +4,7 @@ export const setLoginUser = (user) => {
     user,
   }
 }
+
 export const clearLoginUser = () => {
   return {
     type: 'CLEAR_LOGGED'

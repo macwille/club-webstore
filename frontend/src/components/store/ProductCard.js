@@ -28,9 +28,9 @@ const Product = ({ product }) => {
     dispatch(addItem(product))
   }
 
-  const handleDelete = (id) => {
+  const handleDelete = () => {
     try {
-      dispatch(removeProduct(id))
+      dispatch(removeProduct(product.id))
       dispatch(setNotification('Deleted product'))
     } catch (error) {
       dispatch(setNotification('Error deleting product'))
@@ -50,7 +50,7 @@ const Product = ({ product }) => {
       <CardActionArea>
         <CardActions>
           <Button color="primary" onClick={handleClick} size="small">Add to Cart</Button>
-          <Button color="primary" onClick={() => handleDelete(product.id)} size="small">Delete</Button>
+          <Button color="primary" onClick={handleDelete} size="small">Delete</Button>
         </CardActions>
       </CardActionArea>
     </Card>

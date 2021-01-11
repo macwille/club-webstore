@@ -4,6 +4,7 @@ export const setNotification = message => {
     message: message
   }
 }
+
 export const clearNotification = () => {
   return {
     type: 'CLEAR_NOTIFICATION'

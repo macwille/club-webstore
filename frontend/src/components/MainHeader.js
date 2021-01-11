@@ -1,19 +1,35 @@
 import React from 'react'
-import { Box, Paper, Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core'
 import { TITLE } from '../config'
 
+const useStyles = makeStyles({
+  mainHeader: {
+    padding: '4em',
+    marginBottom: '2em',
+  },
+  titleText: {
+    fontStyle: 'normal',
+    fontWeight: 'bold'
+  }
+})
+
 const MainHeader = () => {
+  const classes = useStyles()
 
   return (
-    <Paper color="primary">
-      <Box p={3}>
-        <Box py={8}>
-          <Typography variant="h1" align="center" paragraph >
-            {TITLE}
+    <Card className={classes.mainHeader}>
+      <Box>
+        <CardContent>
+          <Typography className={classes.titleText} variant="h2" align="center" paragraph >
+            {TITLE.toUpperCase()}
           </Typography>
-        </Box>
+        </CardContent>
+        <CardMedia
+          image={'../static/images/logo512.png'}
+        />
       </Box>
-    </Paper>
+    </Card>
   )
 }
 

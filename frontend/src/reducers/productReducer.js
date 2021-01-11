@@ -19,6 +19,7 @@ export const addProduct = (product) => {
     })
   }
 }
+
 export const removeProduct = (id) => {
   return async dispatch => {
     const response = await productService.remove(id)

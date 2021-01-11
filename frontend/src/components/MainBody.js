@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper } from '@material-ui/core'
+import MainHeader from './MainHeader'
 import Courses from './courses/Courses'
 import Store from './store/Store'
 import RegisterForm from './users/RegisterForm'
@@ -10,8 +11,8 @@ import About from './About'
 
 const useStyles = makeStyles({
   mainBody: {
-    minHeight: '60em',
-    marginTop: '6em'
+    minHeight: '80em',
+    marginTop: '6em',
   }
 })
 
@@ -34,6 +35,7 @@ const MainBody = () => {
           <Login />
         </Route>
         <Route path="/">
+          <MainHeader />
           <About />
         </Route>
       </Switch>

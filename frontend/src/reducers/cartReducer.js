@@ -4,12 +4,14 @@ export const addItem = (item) => {
     item: item
   }
 }
+
 export const removeItem = (item) => {
   return {
     type: 'REMOVE_ITEM_FROM_CART',
     item: item
   }
 }
+
 export const clearCart = () => {
   return {
     type: 'CLEAR_CART',

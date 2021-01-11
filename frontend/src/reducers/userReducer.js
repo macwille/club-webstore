@@ -19,6 +19,7 @@ export const addUser = (user) => {
     })
   }
 }
+
 export const removeUser = (id) => {
   return async dispatch => {
     const response = await userService.remove(id)

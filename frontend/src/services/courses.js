@@ -14,8 +14,9 @@ const create = async newCourse => {
 }
 
 const remove = (id) => {
-  const req = axios.delete(`${baseUrl}/${id}`)
-  return req.then(console.log('course deleted'))
+  const response = axios.delete(`${baseUrl}/${id}`)
+  console.log('Remove course', response)
+  return response
 }
 
 const update = (id, newObject) => {

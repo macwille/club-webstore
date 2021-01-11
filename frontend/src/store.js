@@ -5,11 +5,13 @@ import userReducer from './reducers/userReducer'
 import productReducer from './reducers/productReducer'
 import loginReducer from './reducers/loginReducer'
 import cartReducer from './reducers/cartReducer'
+import courseReducer from './reducers/courseReducer'
 import notificationReducer from './reducers/notificationReducer'
 
 const reducer = combineReducers({
   users: userReducer,
   products: productReducer,
+  courses: courseReducer,
   login: loginReducer,
   cart: cartReducer,
   notification: notificationReducer,

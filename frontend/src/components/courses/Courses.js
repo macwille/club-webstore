@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
 import { AppBar, Tabs, Tab, Box, Typography } from '@material-ui/core'
+import { getCourses } from '../../reducers/courseReducer'
 import CourseList from './CourseList'
-import courseService from '../../services/courses'
 import CourseForm from './CourseForm'
+import { useDispatch, useSelector } from 'react-redux'
 
 const TabPanel = (props) => {
   // eslint-disable-next-line react/prop-types
@@ -28,16 +29,13 @@ const TabPanel = (props) => {
 }
 
 const Courses = () => {
-  const [courses, setCourses] = useState(null)
+  const dispatch = useDispatch()
+  const courses = useSelector(state => state.courses)
   const [value, setValue] = useState(0)
 
   useEffect(() => {
-    courseService
-      .getAll()
-      .then(initial => {
-        setCourses(initial)
-      })
-  }, [])
+    dispatch(getCourses())
+  }, [dispatch])
 
 
   const handleChange = (event, newValue) => {
@@ -64,7 +62,7 @@ const Courses = () => {
           My Courses
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <CourseForm courses={courses} setCourses={setCourses} />
+          <CourseForm courses={courses} />
         </TabPanel>
       </Box>
     </Box>
