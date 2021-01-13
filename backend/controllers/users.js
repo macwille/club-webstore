@@ -4,8 +4,13 @@ const logger = require('../util/logger')
 const User = require('../models/user')
 
 userRouter.get('/', async (request, response) => {
-  const users = await User.find({}).populate('user', { username: 1, firstname: 1 })
+  const users = await User.find(request.params.id).populate('courses')
   response.json(users.map(map => map.toJSON()))
+})
+
+userRouter.get('/:id', async (request, response) => {
+  const user = await User.findOne({}).populate('courses')
+  response.json(user)
 })
 
 userRouter.post('/', async (request, response) => {

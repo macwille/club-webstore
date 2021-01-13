@@ -29,6 +29,7 @@ const Navigation = ({ darkmode, handleDarkmode }) => {
           <Button component={ReactLink} to="/">Home</Button>
           <Button component={ReactLink} to="/courses">Courses</Button>
           <Button component={ReactLink} to="/store">Store</Button>
+          <Button component={ReactLink} to="/account">Account</Button>        
           <Button onClick={handleLogout}>Logout</Button>
         </ButtonGroup>
       )

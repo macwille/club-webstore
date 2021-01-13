@@ -13,13 +13,18 @@ const create = async newUser => {
   return response.data
 }
 
+const get = async id => {
+  const response = await axios.get(`${baseUrl}/${id}`)
+  return response.data
+}
+
 const remove = (id) => {
   const response = axios.delete(`${baseUrl}/${id}`)
   return response.status
-} 
+}
 
 const update = (id, newObject) => {
   return axios.put(`${baseUrl}/${id}`, newObject)
 }
 
-export default { getAll, create, remove, update }
+export default { getAll, get, create, remove, update }

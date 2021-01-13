@@ -8,6 +8,7 @@ import Store from './store/Store'
 import RegisterForm from './users/RegisterForm'
 import Login from './users/Login'
 import About from './About'
+import UserPanel from './users/UserPanel'
 
 const useStyles = makeStyles({
   mainBody: {
@@ -33,6 +34,9 @@ const MainBody = () => {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/account">
+          <UserPanel />
         </Route>
         <Route path="/">
           <MainHeader />
