@@ -58,7 +58,6 @@ const CourseForm = ({ courses, setCourses }) => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <TextField label="Course name" variant="outlined" {...name} clear={null} autoFocus fullWidth required />
-
             </Grid>
             <Grid item xs={12}>
               <TextField label="Description" variant="outlined" {...description} clear={null} fullWidth required />

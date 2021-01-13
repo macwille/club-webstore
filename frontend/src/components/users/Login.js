@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <Container>
       <Helmet >
-        <title>Login - {TITLE}</title>
+        <title>{`Login - ${TITLE}`}</title>
       </Helmet>
       <Box pb={8}>
         <Typography variant="h4">Login</Typography>

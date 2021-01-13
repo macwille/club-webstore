@@ -45,7 +45,7 @@ const Courses = () => {
   return (
     <Box>
       <Helmet >
-        <title>Courses - {TITLE}</title>
+        <title>{`Courses - ${TITLE}`}</title>
       </Helmet>
       <AppBar color="primary" position="static">
         <Tabs value={value} onChange={handleChange}>

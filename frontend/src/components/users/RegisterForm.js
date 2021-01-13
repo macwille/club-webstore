@@ -60,7 +60,7 @@ const RegisterForm = () => {
   if (user) {
     return (
       <Box>
-        <Typography variant="h6">Already Logged in as: {user}</Typography>
+        <Typography variant="h6">{`Already Logged in as: ${user.username}`}</Typography>
       </Box>
     )
   }
@@ -68,7 +68,7 @@ const RegisterForm = () => {
   return (
     <Container>
       <Helmet >
-        <title>Register - {TITLE}</title>
+        <title>{`Register - ${TITLE}`}</title>
       </Helmet>
       <Box pb={8}>
         <Typography variant="h4">Register</Typography>

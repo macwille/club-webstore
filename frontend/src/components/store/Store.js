@@ -11,7 +11,6 @@ import { getProducts } from '../../reducers/productReducer'
 const TabPanel = (props) => {
   // eslint-disable-next-line react/prop-types
   const { children, value, index, ...other } = props
-
   return (
     <div
       role="tabpanel"
@@ -45,7 +44,7 @@ const Store = () => {
   return (
     <Box>
       <Helmet >
-        <title>Store - {TITLE}</title>
+        <title>{`Store - ${TITLE}`}</title>
       </Helmet>
       <AppBar color="primary" position="static">
         <Tabs value={value} onChange={handleChange}>

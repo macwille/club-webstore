@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
-import { Card, CardContent, CardActions, Button, Typography, CardActionArea } from '@material-ui/core'
+import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
 import { removeCourse } from '../../reducers/courseReducer'
 import { setNotification } from '../../reducers/notificationReducer'
 
@@ -12,15 +12,16 @@ const useStyles = makeStyles({
     maxWidth: 260,
     minHeight: 300,
     maxHeight: 300,
-  }
+  },
 })
 
 const CourseCard = ({ course }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const { name, description, trainer, euros, cents } = course
 
-  const euroString = String(course.euros)
-  const centString = course.cents < 10 ? `0${course.cents}` : String(course.cents)
+  const euroString = String(euros)
+  const centString = cents < 10 ? `0${cents}` : String(cents)
 
   const handleClick = (event) => {
     event.preventDefault()
@@ -38,25 +39,23 @@ const CourseCard = ({ course }) => {
     <Card className={classes.courseCard}>
       <CardContent>
         <Typography variant="h6" paragraph>
-          {course.name} <br />
+          {name} <br />
           <Typography variant="subtitle1">
-            {euroString},{centString}€
+            {`${euroString},${centString}€`}
           </Typography>
         </Typography>
         <Typography color="textSecondary" paragraph>
-          {course.description}
+          {description}
         </Typography>
-        {course.trainer &&
+        {trainer &&
           <Typography color="textPrimary">
-            Trainer: {course.trainer.firstname} {course.trainer.lastname}
+            {`Trainer: ${trainer.firstname} ${trainer.lastname}`}
           </Typography>}
       </CardContent>
-      <CardActionArea>
-        <CardActions >
-          <Button color="primary" onClick={handleClick} size="small">Sign Up</Button>
-          <Button color="primary" onClick={handleDelete} size="small">Delete</Button>
-        </CardActions>
-      </CardActionArea>
+      <CardActions>
+        <Button color="primary" onClick={handleClick} size="small">Sign Up</Button>
+        <Button color="primary" onClick={handleDelete} size="small">Delete</Button>
+      </CardActions>
     </Card>
   )
 }

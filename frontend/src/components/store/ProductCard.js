@@ -19,9 +19,10 @@ const useStyles = makeStyles({
 const Product = ({ product }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const { name, euros, cents } = product
 
-  const euroString = String(product.euros)
-  const centString = product.cents < 10 ? `0${product.cents}` : String(product.cents)
+  const euroString = String(euros)
+  const centString = cents < 10 ? `0${cents}` : String(cents)
 
   const handleClick = (event) => {
     event.preventDefault()
@@ -41,7 +42,7 @@ const Product = ({ product }) => {
     <Card className={classes.productCard}>
       <CardContent>
         <Typography variant="h6">
-          {product.name}
+          {name}
         </Typography>
         <Typography >
           {euroString},{centString}€
