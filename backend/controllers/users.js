@@ -46,7 +46,7 @@ userRouter.put('/:id', (request, response) => {
     .then(updated => {
       response.json(updated.toJSON())
     })
-    .catch(error => logger.error(error))
+    .catch(error => console.log(error))
 })
 
 userRouter.delete('/:id', (request, response) => {

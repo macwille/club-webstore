@@ -10,12 +10,21 @@ export const getUsers = () => {
   }
 }
 
-export const addUser = (user) => {
+export const addUser = user => {
   return async dispatch => {
     const users = await userService.create(user)
     dispatch({
       type: 'ADD_USER',
       data: users
+    })
+  }
+}
+export const updateUser = (id, newUser) => {
+  return async dispatch => {
+    const user = await userService.update(id, newUser)
+    dispatch({
+      type: 'UPDATE_USER',
+      data: user.data,
     })
   }
 }
@@ -38,6 +47,8 @@ const userReducer = (state = [], action) => {
     return action.data
   case 'ADD_USER':    
     return [...state, action.data]
+  case 'UPDATE_USER':
+    return state.map(u => (u.id === action.data.id ? action.data : u))
   case 'DELETE_USER':
     return state.filter( ({id}) => id === action.data)
   default:

@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Box, Button, TextField, Typography, Grid, Container, CircularProgress, InputLabel, NativeSelect } from '@material-ui/core'
 import { useField } from '../../hooks/inputFields'
-import userService from '../../services/users'
+import { updateUser, getUsers } from '../../reducers/userReducer'
 import { setNotification } from '../../reducers/notificationReducer'
 
-const UserForm = id => {
+const UserForm = data => {
+  const id = data.id
   const dispatch = useDispatch()
+  const users = useSelector(state => state.users)
   const [user, setUser] = useState(null)
   const [selectedRole, setSelected] = useState('')
   const username = useField('text')
@@ -18,14 +20,20 @@ const UserForm = id => {
   const email = useField('email')
 
   useEffect(() => {
-    console.log('Effect called')
-    userService
-      .get(id)
-      .then(response => {
-        setUser(response)
-        setSelected(response.role)
-      })
+    dispatch(getUsers())
   }, [dispatch])
+
+  useEffect(() => {
+    if (users) {
+      setUser(users.find(u => u.id === id ))
+    }
+  },[users])
+
+  useEffect(() => {
+    if(user) {
+      setSelected(user.role)
+    }
+  },[users])
 
   const handleClear = (event) => {
     username.clear(event)
@@ -42,15 +50,15 @@ const UserForm = id => {
       username: username.value.length > 0 ? username.value : user.username,
       firstname: firstname.value.length > 0 ? firstname.value : user.firstname,
       lastname: lastname.value.length > 0 ? lastname.value : user.lastname,
-      address: address.value.length > 0 ? address.value : address.username,
-      postcode: postcode.value.length > 0 ? postcode.value : user.postcode,
+      address: address.value.length > 0 ? address.value : user.address,
+      postcode: postcode.value.length > 0 ? Number(postcode.value) : user.postcode,
       email: email.value.length > 0 ? email.value : user.email,
-      role: selectedRole,
+      role: selectedRole.length > 0 ? selectedRole : user.role,
     }
     try {
-      userService.update(user.id, newUser).then(response => {
-        dispatch(setNotification(`Edited user ${response.username}`))
-      })
+      dispatch(updateUser(id, newUser))
+      dispatch(setNotification(`Edited user ${newUser.username}`))
+
     } catch (error) {
       dispatch(setNotification('Error eiditing user'))
       console.log(error)

@@ -24,6 +24,7 @@ const remove = (id) => {
 }
 
 const update = (id, newObject) => {
+  console.log('update', id, newObject)
   return axios.put(`${baseUrl}/${id}`, newObject)
 }
 

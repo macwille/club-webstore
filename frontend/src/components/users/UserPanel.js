@@ -10,7 +10,7 @@ const UserPanel = () => {
 
     return (
       <Box>
-        <UserForm user={userObject.id} />
+        <UserForm id={userObject.id} />
       </Box>
 
     )

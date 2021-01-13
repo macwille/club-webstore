@@ -51,6 +51,10 @@ const CourseForm = ({ courses, setCourses }) => {
     setSelected(event.target.value)
   }
 
+  const trainers = users.filter(u => u.role === 'trainer')
+  console.log(users)
+  console.log(trainers  )
+
   return (
     <Box>
       <Container>
@@ -80,7 +84,7 @@ const CourseForm = ({ courses, setCourses }) => {
               <InputLabel>Trainer</InputLabel>
               <NativeSelect value={selectedUser} onChange={handleSelected}>
                 <option aria-label="None" value={null} />
-                {users && users.map(u => (
+                {users && trainers.map(u => (
                   <option key={u.id} value={u.id}>{u.username}</option>)
                 )}
               </NativeSelect>
