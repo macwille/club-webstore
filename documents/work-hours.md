@@ -24,7 +24,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 | 8.1      | Polished frontend components | 2 |
 | 11.1     | Added notification component with Redux state | 4 | 
 | 12.1     | Added delete option for users and products, Added products and courses reducers | 7 | 
-| 13.1     | Added feature to edit user info | 3 | 
+| 13.1     | Added feature to edit user info | 4 | 
 
 
  
