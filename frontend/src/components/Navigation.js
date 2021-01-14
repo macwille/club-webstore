@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 import { Link as ReactLink } from 'react-router-dom'
 import { AppBar, Box, Button, ButtonGroup, Toolbar, Switch } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearLoginUser } from '../reducers/loginReducer'
+import { logout } from '../reducers/loginReducer'
 import { setNotification } from '../reducers/notificationReducer'
 
 const Navigation = ({ darkmode, handleDarkmode }) => {
-  const user = useSelector(state => state.login)
+  const logged = useSelector(state => state.login)
   const dispatch = useDispatch()
   const [checked, setChecked] = useState(darkmode)
 
   const handleLogout = (event) => {
     event.preventDefault()
-    dispatch(clearLoginUser())
+    dispatch(logout())
     dispatch(setNotification('Logged out'))
     window.localStorage.clear()
   }
@@ -23,7 +23,7 @@ const Navigation = ({ darkmode, handleDarkmode }) => {
     handleDarkmode()
   }
   const renderButtons = () => {
-    if (user) {
+    if (logged) {
       return (
         <ButtonGroup>
           <Button component={ReactLink} to="/">Home</Button>

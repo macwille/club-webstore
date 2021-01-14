@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { useField } from '../../hooks/inputFields'
 import userService from '../../services/users'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoginUser } from '../../reducers/loginReducer'
+import { login } from '../../reducers/loginReducer'
 import { setNotification } from '../../reducers/notificationReducer'
 
 const RegisterForm = () => {
@@ -46,7 +46,8 @@ const RegisterForm = () => {
     }
     try {
       userService.create(newUser).then(response => {
-        dispatch(setLoginUser(response.username))
+        dispatch(login())
+        window.localStorage.setItem('loggedUser', JSON.stringify(response))
         history.push('/')
       })
       dispatch(setNotification(`Registered user ${newUser.username}`))

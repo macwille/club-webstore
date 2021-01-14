@@ -1,22 +1,21 @@
-export const setLoginUser = (user) => {
+export const login = () => {
   return {
-    type: 'SET_LOGGED',
-    user,
+    type: 'LOGIN',
   }
 }
 
-export const clearLoginUser = () => {
+export const logout = () => {
   return {
-    type: 'CLEAR_LOGGED'
+    type: 'LOGOUT'
   }
 }
 
-const loginReducer = (state = null, action) => {
+const loginReducer = (state = false, action) => {
   switch (action.type) {
-  case 'CLEAR_LOGGED':
-    return null
-  case 'SET_LOGGED':
-    return action.user
+  case 'LOGIN':
+    return true
+  case 'LOGOUT':
+    return false
   default:
     return state
   }

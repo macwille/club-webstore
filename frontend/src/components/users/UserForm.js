@@ -25,15 +25,15 @@ const UserForm = data => {
 
   useEffect(() => {
     if (users) {
-      setUser(users.find(u => u.id === id ))
+      setUser(users.find(u => u.id === id))
     }
-  },[users])
+  }, [users])
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       setSelected(user.role)
     }
-  },[users])
+  }, [users])
 
   const handleClear = (event) => {
     username.clear(event)

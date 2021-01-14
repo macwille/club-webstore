@@ -8,7 +8,7 @@ import MainBody from './components/MainBody'
 import Notification from './components/Notification'
 import Footer from './components/Footer'
 import { useDispatch } from 'react-redux'
-import { setLoginUser } from './reducers/loginReducer'
+import { login } from './reducers/loginReducer'
 import theme from './theme'
 
 const App = () => {
@@ -20,8 +20,7 @@ const App = () => {
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
     if (loggedUserJSON) {
-      const loggedUser = JSON.parse(loggedUserJSON)
-      dispatch(setLoginUser(loggedUser.username))
+      dispatch(login())
     }
   }, [dispatch])
 
@@ -35,7 +34,7 @@ const App = () => {
         <CssBaseline />
         <Navigation darkmode={darkmode} handleDarkmode={handleDarkmode} />
         <Container>
-          <Notification message="test" />
+          <Notification />
           <MainBody />
           <Footer />
         </Container>

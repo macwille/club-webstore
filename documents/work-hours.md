@@ -8,7 +8,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 
 | Days | Hours |
 | :--  | :---: |
-| 11    | 54    |
+| 11    | 55    |
 
 ### Detailed 
 
@@ -25,6 +25,8 @@ Time used for the development of the project. Hours will be detailed daily and m
 | 11.1     | Added notification component with Redux state | 4 | 
 | 12.1     | Added delete option for users and products, Added products and courses reducers | 7 | 
 | 13.1     | Added feature to edit user info | 4 | 
+| 14.1     | Refactor loginReducer to use boolean | 1 |
+
 
 
  

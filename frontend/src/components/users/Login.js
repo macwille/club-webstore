@@ -3,7 +3,7 @@ import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoginUser } from '../../reducers/loginReducer'
+import { login } from '../../reducers/loginReducer'
 import { Button, Box, Container, TextField, Typography, Grid } from '@material-ui/core'
 import { useField } from '../../hooks/inputFields'
 import loginService from '../../services/login'
@@ -26,7 +26,7 @@ const Login = () => {
       })
       localStorage.setItem('token', userObject.token)
       window.localStorage.setItem('loggedUser', JSON.stringify(userObject))
-      dispatch(setLoginUser(userObject.username))
+      dispatch(login())
       dispatch(setNotification(`Welcome back ${userObject.username}`))
       history.push('/')
     } catch (exception) {

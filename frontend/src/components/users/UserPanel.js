@@ -1,11 +1,13 @@
-import { Box } from '@material-ui/core'
 import React from 'react'
+import { Box } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 import UserForm from './UserForm'
 
 const UserPanel = () => {
-  const loggedUserJSON = window.localStorage.getItem('loggedUser')
+  const logged = useSelector(state => state.login)
 
-  if (loggedUserJSON) {
+  if (logged) {
+    const loggedUserJSON = window.localStorage.getItem('loggedUser')
     const userObject = JSON.parse(loggedUserJSON)
 
     return (
