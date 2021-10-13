@@ -35,7 +35,7 @@ jobs:
         run: npm run lint
         working-directory: backend
       - name: build ui
-        run: npm run build:ui
+        run: npm run build
         working-directory: backend
       - name: Deploy backend
         uses: akhileshns/heroku-deploy@v3.6.8
