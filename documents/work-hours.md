@@ -8,7 +8,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 
 | Days | Hours |
 | :--  | :---: |
-| 11    | 55    |
+| 13    | 68   |
 
 ### Detailed 
 
