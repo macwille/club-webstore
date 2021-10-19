@@ -1,4 +1,6 @@
 backend/build
+backend/dist
+.config
 
 # VS code
 *.vscode
