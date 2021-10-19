@@ -9,7 +9,7 @@
     "transpile": "tsc -p tsconfig.json",
     "build": "rm -rf build && cd ../frontend && npm run build --prod && cp -r build ../backend && cd ../frontend && rm -rf build",
     "clean": "rm -rf build",
-    "deploy": "cd ../ && git subtree push --prefix backend heroku master",
+    "deploy": "cd ../ && git subtree push --prefix backend heroku main",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "logs:prod": "heroku logs --tail",
