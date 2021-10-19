@@ -1,15 +1,28 @@
-import express from 'express'
+/**
+ * Express router for courses.
+ * @module controllers/courses
+ * @requires express
+ */
+import express, { Request, Response } from 'express'
 import logger from '../util/logger'
 import Course from '../models/course'
 
 const courseRouter = express.Router()
 
-courseRouter.get('/', async (request, response) => {
-  const courses = await Course.find({}).populate('trainer')
+/**
+ * Get courses.
+ * @route GET /
+ */
+courseRouter.get('/', async (request: Request, response: Response) => {
+  const courses = Course.find({}).populate('trainer')
   response.json(courses.map(map => map.toJSON()))
 })
 
-courseRouter.post('/', async (request, response) => {
+/**
+ * Post new course.
+ * @route POST /
+ */
+courseRouter.post('/', async (request: Request, response: Response) => {
   const body = request.body
 
   const course = new Course({
@@ -25,7 +38,11 @@ courseRouter.post('/', async (request, response) => {
   response.json(savedCourse)
 })
 
-courseRouter.put('/:id', (request, response) => {
+/**
+ * Update course.
+ * @route PUT /
+ */
+courseRouter.put('/:id', (request: Request, response: Response) => {
   const body = request.body
 
   const course = {
@@ -34,17 +51,23 @@ courseRouter.put('/:id', (request, response) => {
 
   Course.findByIdAndUpdate(request.params.id, course, { new: true })
     .then(updated => {
-      response.json(updated.toJSON())
+      if (updated !== null) {
+        response.json(updated.toJSON())
+      } else {
+        response.json(course)
+      }
     })
     .catch(error => logger.error(error))
 })
 
-courseRouter.delete('/:id', (request, response) => {
+/**
+ * Remove a course.
+ * @route DELETE /
+ */
+courseRouter.delete('/:id', (request: Request, response: Response) => {
   Course.findByIdAndRemove(request.params.id)
     .then(() => {
       response.status(204).end()
     })
     .catch(error => logger.error(error))
 })
-
-export default courseRouter

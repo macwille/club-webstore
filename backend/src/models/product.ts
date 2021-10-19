@@ -1,7 +1,16 @@
-import mongoose from 'mongoose'
+import { Schema, model } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 
-const productSchema = mongoose.Schema({
+interface IProduct {
+  name: string;
+  description: string;
+  euros: number;
+  cents: number;
+  stock: number;
+  toJSON(): any;
+}
+
+const productSchema = new Schema<IProduct>({
   name: {
     type: String,
     unique: true
@@ -23,6 +32,6 @@ productSchema.set('toJSON', {
 
 productSchema.plugin(uniqueValidator)
 
-const Product = mongoose.model('Product', productSchema)
+const Product = model('Product', productSchema)
 
 export default Product

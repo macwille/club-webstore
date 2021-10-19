@@ -1,3 +1,8 @@
+/**
+ * Express router for user login procedure.
+ * @module controllers/login
+ * @requires express
+ */
 import bcrypt from 'bcrypt'
 import express from 'express'
 import logger from '../util/logger'

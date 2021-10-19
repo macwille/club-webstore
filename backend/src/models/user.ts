@@ -1,7 +1,24 @@
-import mongoose from 'mongoose'
+import { Schema, model } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 
-const userSchema = mongoose.Schema({
+interface IUser {
+  username: string;
+  firstname: string;
+  lastname: string;
+  address: string;
+  postcode: number;
+  email: string;
+  euros: number;
+  cents: number;
+  stock: number;
+  passwordHash: string;
+  role: string;
+  courses: Array<Schema.Types.ObjectId>;
+  products: Array<Schema.Types.ObjectId>;
+  toJSON(): any;
+}
+
+const userSchema = new Schema<IUser>({
   username: {
     type: String,
     unique: true
@@ -18,13 +35,13 @@ const userSchema = mongoose.Schema({
   role: String,
   courses: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Course'
     },
   ],
   products: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Product'
     },
   ]
@@ -41,6 +58,6 @@ userSchema.set('toJSON', {
 
 userSchema.plugin(uniqueValidator)
 
-const User = mongoose.model('User', userSchema)
+const User = model('User', userSchema)
 
 export default User

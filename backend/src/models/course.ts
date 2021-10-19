@@ -1,7 +1,19 @@
-import mongoose from 'mongoose'
-import uniqueValidator from 'mongoose-unique-validator'
+import { Schema, model, Date } from 'mongoose'
+import  uniqueValidator from 'mongoose-unique-validator'
 
-const courseSchema = mongoose.Schema({
+interface ICourse {
+  name: string,
+  description: string,
+  startDate: Date,
+  euros: number,
+  cents: number,
+  maxParticipants: number,
+  trainer: Schema.Types.ObjectId,
+  participants: Schema.Types.ObjectId,
+  toJSON(): any
+}
+
+const courseSchema = new Schema<ICourse>({
   name: {
     type: String,
     unique: true
@@ -12,12 +24,12 @@ const courseSchema = mongoose.Schema({
   cents: Number,
   maxParticipants: Number,
   trainer: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User'
   },
   participants: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'User'
     },
   ]
@@ -33,6 +45,6 @@ courseSchema.set('toJSON', {
 
 courseSchema.plugin(uniqueValidator)
 
-const Course = mongoose.model('Course', courseSchema)
+const Course = model('Course', courseSchema)
 
 export default Course
