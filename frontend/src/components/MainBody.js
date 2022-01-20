@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper } from '@material-ui/core'
 import MainHeader from './MainHeader'
@@ -22,27 +22,14 @@ const MainBody = () => {
 
   return (
     <Paper className={classes.mainBody}>
-      <Switch>
-        <Route path="/courses">
-          <Courses />
-        </Route>
-        <Route path="/store">
-          <Store />
-        </Route>
-        <Route path="/register">
-          <RegisterForm />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/account">
-          <UserPanel />
-        </Route>
-        <Route path="/">
-          <MainHeader />
-          <About />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/courses" element={<Courses/>}/>
+        <Route path="/store" element={<Store/>}/>
+        <Route path="/register" element={<RegisterForm />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/account" element={<UserPanel/>}/>
+        <Route path="/" element={<><MainHeader/><About/></>}/>
+      </Routes>
     </Paper>
   )
 }

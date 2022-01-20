@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link as ReactLink } from 'react-router-dom'
-import { AppBar, Box, Button, ButtonGroup, Toolbar, Switch } from '@material-ui/core'
+import { Link as ReactLink, Routes } from 'react-router-dom'
+import { AppBar, Box, Button, ButtonGroup, Toolbar } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../reducers/loginReducer'
 import { setNotification } from '../reducers/notificationReducer'
@@ -52,7 +52,7 @@ const Navigation = ({ darkmode, handleDarkmode }) => {
         <Toolbar>
           {renderButtons()}
           <Box>
-            <Switch checked={checked} onChange={handleSwitch} />
+            <Routes checked={checked} onChange={handleSwitch} />
           </Box>
         </Toolbar>
       </AppBar>

@@ -1,9 +1,9 @@
 import React from 'react'
-import { createMuiTheme } from '@material-ui/core'
+import { createTheme } from '@material-ui/core'
 import { indigo, red, lightBlue } from '@material-ui/core/colors'
 
 const theme = (darkmode) => {
-  return (React.useMemo(() => createMuiTheme({
+  return (React.useMemo(() => createTheme({
     palette: {
       type: darkmode ? 'dark' : 'light',
       primary: darkmode ? lightBlue : indigo,

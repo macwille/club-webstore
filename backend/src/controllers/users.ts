@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt'
 import express from 'express'
-import logger from '../util/logger'
 import User from '../models/user'
 
 const userRouter = express.Router()
@@ -46,7 +45,9 @@ userRouter.put('/:id', (request, response) => {
 
   User.findByIdAndUpdate(request.params.id, user, { new: true })
     .then(updated => {
+      if (updated !== null) {
       response.json(updated.toJSON())
+      }
     })
     .catch(error => console.log(error))
 })
@@ -56,7 +57,7 @@ userRouter.delete('/:id', (request, response) => {
     .then(() => {
       response.status(204).end()
     })
-    .catch(error => logger.error(error))
+    .catch(error => console.log(error))
 })
 
 export default userRouter

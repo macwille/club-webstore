@@ -15,7 +15,7 @@ const ProductList = ({ products }) => {
 
   return (
     <Box>
-      <Grid container spacing={3} justify="flex-start" alignItems="baseline" direction="row">
+      <Grid container spacing={3} justifyContent="flex-start" alignItems="baseline" direction="row">
         {products.map(p =>
           <Grid key={p.id} item xs={12} sm={3}>
             <ProductCard product={p} />

@@ -2,7 +2,7 @@ import React from 'react'
 import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
 import { Box, Button, TextField, Typography, Grid, Container } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useField } from '../../hooks/inputFields'
 import userService from '../../services/users'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,7 +12,7 @@ import { setNotification } from '../../reducers/notificationReducer'
 const RegisterForm = () => {
   const user = useSelector(state => state.login)
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const username = useField('text')
   const password = useField('password')
@@ -48,7 +48,7 @@ const RegisterForm = () => {
       userService.create(newUser).then(response => {
         dispatch(login())
         window.localStorage.setItem('loggedUser', JSON.stringify(response))
-        history.push('/')
+        navigate.push('/')
       })
       dispatch(setNotification(`Registered user ${newUser.username}`))
       handleClear(event)

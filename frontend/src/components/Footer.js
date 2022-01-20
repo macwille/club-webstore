@@ -6,14 +6,14 @@ const Footer = () => {
 
   return (
     <Box pb="2em" pt="10em">
-      <Grid container justify="center" alignItems="center" spacing={1}>
+      <Grid container justifyContent="center" alignItems="center" spacing={1}>
         <Grid item>
           <Typography paragraph color="textSecondary">
             Made by Ville Manninen. Licensed <Link href="https://opensource.org/licenses/MIT">MIT</Link>.
           </Typography>
         </Grid>
       </Grid>
-      <Grid container justify="center" alignItems="center" spacing={1}>
+      <Grid container justifyContent="center" alignItems="center" spacing={1}>
         <Grid item >
           <IconButton href="https://github.com/macwille/club-webstore" color="primary">
             <GitHubIcon />

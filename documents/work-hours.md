@@ -8,7 +8,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 
 | Days | Hours |
 | :--  | :---: |
-| 13   | 81    |
+| 16   | 85    |
 
 ### Detailed 
 
@@ -29,6 +29,8 @@ Time used for the development of the project. Hours will be detailed daily and m
 | 14.1.    | Refactor loginReducer to use boolean | 4 |
 | 13.10.   | Updated packages and missing working hours   | 3 |
 | 19.10.   | Started Typescript migration  | 8 |
+| 2022     | 
+| 20.1.   | Updated frontend to replace depracted modules  | 4 |
 
 
 

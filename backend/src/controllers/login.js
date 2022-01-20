@@ -1,11 +1,6 @@
-/**
- * Express router for user login procedure.
- * @module controllers/login
- * @requires express
- */
+
 import bcrypt from 'bcrypt'
 import express from 'express'
-import logger from '../util/logger'
 import User from '../models/user'
 import jwt from 'jsonwebtoken'
 import { SECRET } from '../util/config'
@@ -20,7 +15,6 @@ loginRouter.post('/', async (request, response) => {
     : await bcrypt.compare(body.password, user.passwordHash)
 
   if (!(user && passwordCorrect)) {
-    logger.info('Credentials failed')
     return response.status(401).json({
       error: 'Invalid username or password'
     })

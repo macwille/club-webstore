@@ -1,7 +1,7 @@
 import React from 'react'
 import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../reducers/loginReducer'
 import { Button, Box, Container, TextField, Typography, Grid } from '@material-ui/core'
@@ -12,7 +12,7 @@ import { setNotification } from '../../reducers/notificationReducer'
 const Login = () => {
   const user = useSelector(state => state.login)
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const username = useField('text')
   const password = useField('password')
@@ -28,7 +28,7 @@ const Login = () => {
       window.localStorage.setItem('loggedUser', JSON.stringify(userObject))
       dispatch(login())
       dispatch(setNotification(`Welcome back ${userObject.username}`))
-      history.push('/')
+      navigate.push('/')
     } catch (exception) {
       console.log('Exception logging in', exception)
       dispatch(setNotification('Wrong username or password'))

@@ -1,7 +1,4 @@
-import { Request, Response, NextFunction } from 'express'
-
-
-const requestLogger = (request: Request, response: Response, next: NextFunction) => {
+const requestLogger = (request, response, next) => {
   console.log('Method:', request.method)
   console.log('Path:  ', request.path)
   console.log('Body:  ', request.body)
@@ -9,7 +6,7 @@ const requestLogger = (request: Request, response: Response, next: NextFunction)
   next()
 }
 
-const errorHandler = (error: any, request: Request, response: Response, next: NextFunction) => {
+const errorHandler = (error, request, response, next) => {
   if (error.name === 'CastError' && error.kind === 'ObjectId') {
     return response.status(400).send({ error: 'malformatted id' })
   } else if (error.name === 'ValidationError') {
@@ -20,11 +17,11 @@ const errorHandler = (error: any, request: Request, response: Response, next: Ne
   next(error)
 }
 
-const unknownEndpoint = (request: Request, response: Response) => {
+const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint', status: 404 })
 }
 
-export default {
+module.exports= {
   requestLogger,
   errorHandler,
   unknownEndpoint
