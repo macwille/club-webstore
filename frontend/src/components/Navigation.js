@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link as ReactLink, Routes } from 'react-router-dom'
-import { AppBar, Box, Button, ButtonGroup, Toolbar } from '@material-ui/core'
+import { Link as ReactLink } from 'react-router-dom'
+import { AppBar, Box, Button, ButtonGroup, Toolbar, Switch} from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../reducers/loginReducer'
 import { setNotification } from '../reducers/notificationReducer'
@@ -29,7 +29,7 @@ const Navigation = ({ darkmode, handleDarkmode }) => {
           <Button component={ReactLink} to="/">Home</Button>
           <Button component={ReactLink} to="/courses">Courses</Button>
           <Button component={ReactLink} to="/store">Store</Button>
-          <Button component={ReactLink} to="/account">Account</Button>        
+          <Button component={ReactLink} to="/account">Account</Button>
           <Button onClick={handleLogout}>Logout</Button>
         </ButtonGroup>
       )
@@ -51,9 +51,7 @@ const Navigation = ({ darkmode, handleDarkmode }) => {
       <AppBar color="inherit">
         <Toolbar>
           {renderButtons()}
-          <Box>
-            <Routes checked={checked} onChange={handleSwitch} />
-          </Box>
+          <Switch checked={checked} onChange={handleSwitch} size="small" />
         </Toolbar>
       </AppBar>
     </Box>
