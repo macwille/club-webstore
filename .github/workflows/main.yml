@@ -32,6 +32,7 @@ jobs:
         working-directory: backend
       - name: lint backend
         run: npm run lint
+        working-directory: backend
       - name: transpile backend
         run: npm run transpile
         working-directory: backend
