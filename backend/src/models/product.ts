@@ -1,13 +1,14 @@
-import { Schema, model } from 'mongoose'
-import uniqueValidator from 'mongoose-unique-validator'
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { Document, Schema, model } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
-interface IProduct {
+interface IProduct extends Document {
   name: string;
   description: string;
   euros: number;
   cents: number;
   stock: number;
-  toJSON(): any;
 }
 
 const productSchema = new Schema<IProduct>({
@@ -19,19 +20,19 @@ const productSchema = new Schema<IProduct>({
   euros: Number,
   cents: Number,
   stock: Number,
-})
+});
 
 productSchema.set('toJSON', {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-    delete returnedObject.passwordHash
+  transform: (_document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
+    delete returnedObject.passwordHash;
   }
-})
+});
 
-productSchema.plugin(uniqueValidator)
+productSchema.plugin(uniqueValidator);
 
-const Product = model('Product', productSchema)
+const Product = model<IProduct>('Product', productSchema);
 
-export default Product
+export default Product;

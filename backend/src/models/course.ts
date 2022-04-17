@@ -1,16 +1,17 @@
-import { Schema, model, Date } from 'mongoose'
-import  uniqueValidator from 'mongoose-unique-validator'
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { Document, Schema, model, Date } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
-interface ICourse {
+interface ICourse extends Document {
   name: string,
-  description: string,
-  startDate: Date,
-  euros: number,
-  cents: number,
-  maxParticipants: number,
-  trainer: Schema.Types.ObjectId,
-  participants: Schema.Types.ObjectId,
-  toJSON(): any
+  description?: string,
+  startDate?: Date,
+  euros?: number,
+  cents?: number,
+  maxParticipants?: number,
+  trainer?: Schema.Types.ObjectId,
+  participants?: Schema.Types.ObjectId
 }
 
 const courseSchema = new Schema<ICourse>({
@@ -33,18 +34,18 @@ const courseSchema = new Schema<ICourse>({
       ref: 'User'
     },
   ]
-})
+});
 
 courseSchema.set('toJSON', {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
+  transform: (_document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
   }
-})
+});
 
-courseSchema.plugin(uniqueValidator)
+courseSchema.plugin(uniqueValidator);
 
-const Course = model('Course', courseSchema)
+const Course = model<ICourse>('Course', courseSchema);
 
-export default Course
+export default Course;

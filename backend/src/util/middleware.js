@@ -1,28 +1,32 @@
-const requestLogger = (request, response, next) => {
-  console.log('Method:', request.method)
-  console.log('Path:  ', request.path)
-  console.log('Body:  ', request.body)
-  console.log('---')
-  next()
-}
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 
-const errorHandler = (error, request, response, next) => {
-  if (error.name === 'CastError' && error.kind === 'ObjectId') {
-    return response.status(400).send({ error: 'malformatted id' })
-  } else if (error.name === 'ValidationError') {
-    return response.status(400).json({ error: error.message })
-  } else if (error.name === 'JsonWebTokenError') {
-    return response.status(401).json({ error: 'invalid token' })
+const requestLogger = (req, _res, next) => {
+  console.log('Method:', req.method);
+  console.log('Path:  ', req.path);
+  console.log('Body:  ', req.body);
+  console.log('---');
+  next();
+};
+
+const errorHandler = (e, _req, res, next) => {
+  if (e.name === 'CastError' && e.kind === 'ObjectId') {
+    return res.status(400).send({ error: 'malformatted id' });
+  } else if (e.name === 'ValidationError') {
+    return res.status(400).json({ error: e.message });
+  } else if (e.name === 'JsonWebTokenError') {
+    return res.status(401).json({ error: 'invalid token' });
   }
-  next(error)
-}
+  next(e);
+};
 
-const unknownEndpoint = (request, response) => {
-  response.status(404).send({ error: 'unknown endpoint', status: 404 })
-}
+const unknownEndpoint = (_req, res) => {
+  res.status(404).send({ error: 'unknown endpoint', status: 404 });
+};
 
-module.exports= {
+module.exports = {
   requestLogger,
   errorHandler,
   unknownEndpoint
-}
+};

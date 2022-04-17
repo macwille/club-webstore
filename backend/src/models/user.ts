@@ -1,7 +1,9 @@
-import { Schema, model } from 'mongoose'
-import uniqueValidator from 'mongoose-unique-validator'
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { Document, Schema, model } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
-interface IUser {
+interface IUser extends Document {
   username: string;
   firstname: string;
   lastname: string;
@@ -15,7 +17,6 @@ interface IUser {
   role: string;
   courses: Array<Schema.Types.ObjectId>;
   products: Array<Schema.Types.ObjectId>;
-  toJSON(): any;
 }
 
 const userSchema = new Schema<IUser>({
@@ -45,19 +46,19 @@ const userSchema = new Schema<IUser>({
       ref: 'Product'
     },
   ]
-})
+});
 
 userSchema.set('toJSON', {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-    delete returnedObject.passwordHash
+  transform: (_document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
+    delete returnedObject.passwordHash;
   }
-})
+});
 
-userSchema.plugin(uniqueValidator)
+userSchema.plugin(uniqueValidator);
 
-const User = model('User', userSchema)
+const User = model<IUser>('User', userSchema);
 
-export default User
+export default User;
