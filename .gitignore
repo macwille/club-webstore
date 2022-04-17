@@ -1,5 +1,6 @@
 backend/build
 backend/dist
+frontend/build
 .config
 
 # VS code
