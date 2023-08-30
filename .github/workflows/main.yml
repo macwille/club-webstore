@@ -39,14 +39,3 @@ jobs:
       - name: build ui
         run: npm run build
         working-directory: backend
-      - name: Deploy backend
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "club-webstore"
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          appdir: "backend"
-        env:
-          MONGODB_URI: ${{secrets.MONGODB_URI}}
-          HD_SECRET: ${{secrets.SECRET}}
-          HD_APP_BASE: "backend"
