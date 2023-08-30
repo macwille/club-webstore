@@ -1,4 +1,4 @@
-# Club Webstore Application [DEMO](https://club-webstore.herokuapp.com/)
+# Club Webstore Application
 
 ![GitHub Actions](https://github.com/macwille/club-webstore/workflows/CI/CD-pipeline/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
