@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Document, Schema, model } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
 
 interface IUser extends Document {
   username: string;
@@ -56,8 +55,6 @@ userSchema.set('toJSON', {
     delete returnedObject.passwordHash;
   }
 });
-
-userSchema.plugin(uniqueValidator);
 
 const User = model<IUser>('User', userSchema);
 

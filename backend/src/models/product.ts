@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Document, Schema, model } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
 
 interface IProduct extends Document {
   name: string;
@@ -30,8 +29,6 @@ productSchema.set('toJSON', {
     delete returnedObject.passwordHash;
   }
 });
-
-productSchema.plugin(uniqueValidator);
 
 const Product = model<IProduct>('Product', productSchema);
 

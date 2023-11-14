@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Document, Schema, model, Date } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
 
 interface ICourse extends Document {
   name: string,
@@ -43,8 +42,6 @@ courseSchema.set('toJSON', {
     delete returnedObject.__v;
   }
 });
-
-courseSchema.plugin(uniqueValidator);
 
 const Course = model<ICourse>('Course', courseSchema);
 
