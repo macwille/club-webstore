@@ -1,22 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles'
-import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
+import { Card, CardContent, CardActions, Button, Typography } from '@mui/material'
 import { removeCourse } from '../../reducers/courseReducer'
 import { setNotification } from '../../reducers/notificationReducer'
 
-const useStyles = makeStyles({
-  courseCard: {
-    minWidth: 260,
-    maxWidth: 260,
-    minHeight: 300,
-    maxHeight: 300,
-  },
-})
 
 const CourseCard = ({ course }) => {
-  const classes = useStyles()
   const dispatch = useDispatch()
   const { name, description, trainer, euros, cents } = course
 
@@ -36,7 +26,7 @@ const CourseCard = ({ course }) => {
   }
 
   return (
-    <Card className={classes.courseCard}>
+    <Card>
       <CardContent>
         <Typography variant="h6" paragraph>
           {name} <br />

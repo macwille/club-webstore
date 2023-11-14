@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Box, Button, TextField, Grid } from '@material-ui/core'
+import { Container, Box, Button, TextField, Grid } from '@mui/material'
 import productService from '../../services/products'
 import { useField } from '../../hooks/inputFields'
 import { useDispatch } from 'react-redux'
@@ -62,7 +62,7 @@ const ProductForm = ({ products, setProducts }) => {
               <Button variant="contained" color="primary" type="submit">Create</Button>
             </Grid>
             <Grid item xs={12} sm={2}>
-              <Button variant="contained" color="light" onClick={handleClear}>Clear</Button>
+              <Button variant="contained" onClick={handleClear}>Clear</Button>
             </Grid>
           </Grid>
         </form>

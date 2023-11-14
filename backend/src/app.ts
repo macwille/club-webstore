@@ -5,7 +5,7 @@ import express from 'express';
 import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { MONGODB_URI } from './util/config';
+import { MONGODB_URI } from './config';
 import middleware from './util/middleware';
 import logger from './util/logger';
 import usersRouter from './routes/users';
@@ -16,9 +16,12 @@ import mongoose from 'mongoose';
 
 const app = express();
 
+app.use(middleware.unknownEndpoint);
+app.use(middleware.errorHandler);
+
 logger.info('connecting to Mongoose');
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB_URI)
   .then(() => {
     logger.info('connected to MongoDB');
   })
@@ -47,7 +50,5 @@ if (process.env.NODE_ENV === 'test') {
   logger.info('Testing mode detected');
 }
 
-app.use(middleware.unknownEndpoint);
-app.use(middleware.errorHandler);
 
 export default app;

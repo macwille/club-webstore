@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../reducers/loginReducer'
-import { Button, Box, Container, TextField, Typography, Grid } from '@material-ui/core'
+import { Button, Box, Container, TextField, Typography, Grid } from '@mui/material'
 import { useField } from '../../hooks/inputFields'
 import loginService from '../../services/login'
 import { setNotification } from '../../reducers/notificationReducer'
@@ -28,7 +28,7 @@ const Login = () => {
       window.localStorage.setItem('loggedUser', JSON.stringify(userObject))
       dispatch(login())
       dispatch(setNotification(`Welcome back ${userObject.username}`))
-      navigate.push('/')
+      navigate('/')
     } catch (exception) {
       console.log('Exception logging in', exception)
       dispatch(setNotification('Wrong username or password'))

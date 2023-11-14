@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { Link as ReactLink } from 'react-router-dom'
-import { AppBar, Box, Button, ButtonGroup, Toolbar, Switch} from '@material-ui/core'
+import { AppBar, Box, Button, ButtonGroup, Toolbar} from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../reducers/loginReducer'
 import { setNotification } from '../reducers/notificationReducer'
 
-const Navigation = ({ darkmode, handleDarkmode }) => {
+const Navigation = () => {
   const logged = useSelector(state => state.login)
   const dispatch = useDispatch()
-  const [checked, setChecked] = useState(darkmode)
 
   const handleLogout = (event) => {
     event.preventDefault()
@@ -17,11 +15,7 @@ const Navigation = ({ darkmode, handleDarkmode }) => {
     dispatch(setNotification('Logged out'))
     window.localStorage.clear()
   }
-
-  const handleSwitch = () => {
-    setChecked((prev) => !prev)
-    handleDarkmode()
-  }
+  
   const renderButtons = () => {
     if (logged) {
       return (
@@ -51,16 +45,10 @@ const Navigation = ({ darkmode, handleDarkmode }) => {
       <AppBar color="inherit">
         <Toolbar>
           {renderButtons()}
-          <Switch checked={checked} onChange={handleSwitch} size="small" />
         </Toolbar>
       </AppBar>
     </Box>
   )
-}
-
-Navigation.propTypes = {
-  darkmode: PropTypes.bool,
-  handleDarkmode: PropTypes.func
 }
 
 export default Navigation

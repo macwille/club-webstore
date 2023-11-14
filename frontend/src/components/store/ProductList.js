@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, CircularProgress, Grid } from '@material-ui/core'
+import { Box, CircularProgress, Grid } from '@mui/material'
 import ProductCard from './ProductCard'
 
 const ProductList = ({ products }) => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, Button, TextField, Typography, Grid, Container, CircularProgress, InputLabel, NativeSelect } from '@material-ui/core'
+import { Box, Button, TextField, Typography, Grid, Container, CircularProgress, InputLabel, NativeSelect } from '@mui/material'
 import { useField } from '../../hooks/inputFields'
 import { updateUser, getUsers } from '../../reducers/userReducer'
 import { setNotification } from '../../reducers/notificationReducer'
@@ -11,7 +11,7 @@ const UserForm = data => {
   const dispatch = useDispatch()
   const users = useSelector(state => state.users)
   const [user, setUser] = useState(null)
-  const [selectedRole, setSelected] = useState('')
+  const [selectedRole, setSelectedRole] = useState('')
   const username = useField('text')
   const firstname = useField('text')
   const lastname = useField('text')
@@ -31,7 +31,7 @@ const UserForm = data => {
 
   useEffect(() => {
     if (user) {
-      setSelected(user.role)
+      setSelectedRole(user.role)
     }
   }, [users])
 
@@ -66,7 +66,7 @@ const UserForm = data => {
   }
 
   const handleSelected = (event) => {
-    setSelected(event.target.value)
+    setSelectedRole(event.target.value)
   }
 
   if (!user) {

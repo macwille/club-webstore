@@ -2,22 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../../reducers/cartReducer'
-import { makeStyles } from '@material-ui/core/styles'
-import { Card, CardContent, CardActions, CardActionArea, Button, Typography } from '@material-ui/core'
+import { Card, CardContent, CardActions, CardActionArea, Button, Typography } from '@mui/material'
 import { removeProduct } from '../../reducers/productReducer'
 import { setNotification } from '../../reducers/notificationReducer'
 
-const useStyles = makeStyles({
-  productCard: {
-    minWidth: 260,
-    maxWidth: 260,
-    minHeight: 300,
-    maxHeight: 300,
-  }
-})
 
 const Product = ({ product }) => {
-  const classes = useStyles()
   const dispatch = useDispatch()
   const { name, euros, cents } = product
 
@@ -39,7 +29,7 @@ const Product = ({ product }) => {
   }
 
   return (
-    <Card className={classes.productCard}>
+    <Card>
       <CardContent>
         <Typography variant="h6">
           {name}

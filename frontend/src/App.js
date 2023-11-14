@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
-import { Container, CssBaseline, ThemeProvider } from '@material-ui/core'
+import { Container, CssBaseline } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
 import Navigation from './components/Navigation'
 import MainBody from './components/MainBody'
 import Notification from './components/Notification'
@@ -11,11 +12,9 @@ import { useDispatch } from 'react-redux'
 import { login } from './reducers/loginReducer'
 import theme from './theme'
 
+
 const App = () => {
   const dispatch = useDispatch()
-  const [darkmode, setDarkmode] = useState(false)
-
-  const useTheme = theme(darkmode)
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
@@ -24,16 +23,12 @@ const App = () => {
     }
   }, [dispatch])
 
-  const handleDarkmode = () => {
-    setDarkmode((prev) => !prev)
-  }
-
   return (
     <Router>
-      <ThemeProvider theme={useTheme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navigation darkmode={darkmode} handleDarkmode={handleDarkmode} />
-        <Container>
+        <Navigation/>
+        <Container sx={{paddingTop: 10}}>
           <Notification />
           <MainBody />
           <Footer />

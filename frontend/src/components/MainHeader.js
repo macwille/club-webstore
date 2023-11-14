@@ -1,27 +1,15 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core'
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material'
 import { TITLE } from '../config'
 
-const useStyles = makeStyles({
-  mainHeader: {
-    padding: '4em',
-    marginBottom: '2em',
-  },
-  titleText: {
-    fontStyle: 'normal',
-    fontWeight: 'bold'
-  }
-})
 
 const MainHeader = () => {
-  const classes = useStyles()
 
   return (
-    <Card className={classes.mainHeader}>
+    <Card>
       <Box>
         <CardContent>
-          <Typography className={classes.titleText} variant="h2" align="center" paragraph >
+          <Typography variant="h2" align="center" paragraph >
             {TITLE.toUpperCase()}
           </Typography>
         </CardContent>

@@ -1,6 +1,6 @@
 import app from './app';
 import http from 'http';
-import { PORT } from './util/config';
+import { PORT } from './config';
 import logger from './util/logger';
 
 const server = http.createServer(app);

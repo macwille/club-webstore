@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { TITLE } from '../config'
 import { Helmet } from 'react-helmet'
-import { Box, Container, Typography, CircularProgress, Grid } from '@material-ui/core'
+import { Box, Container, Typography, CircularProgress, Grid } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../reducers/userReducer'
 import UserCard from './users/UserCard'

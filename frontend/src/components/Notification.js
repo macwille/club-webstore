@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Snackbar, Button, SnackbarContent } from '@material-ui/core'
+import { Snackbar, Button, SnackbarContent } from '@mui/material'
 import { clearNotification } from '../reducers/notificationReducer'
 
 const Notification = () => {

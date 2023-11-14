@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Box, Button, TextField, Grid, InputLabel, NativeSelect } from '@material-ui/core'
+import { Container, Box, Button, TextField, Grid, InputLabel, NativeSelect } from '@mui/material'
 import courseService from '../../services/courses'
 import { useField } from '../../hooks/inputFields'
 import { setNotification } from '../../reducers/notificationReducer'
@@ -93,7 +93,7 @@ const CourseForm = ({ courses, setCourses }) => {
               <Button variant="contained" color="primary" type="submit">Create</Button>
             </Grid>
             <Grid item xs={12} sm={2}>
-              <Button variant="contained" color="light" onClick={handleClear}>Clear</Button>
+              <Button variant="contained" onClick={handleClear}>Clear</Button>
             </Grid>
           </Grid>
         </form>

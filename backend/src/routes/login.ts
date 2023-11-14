@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 import { Router } from 'express';
-import { SECRET } from '../util/config';
+import { SECRET } from '../config';
 import bcrypt from 'bcrypt';
 import logger from '../util/logger';
 import User from '../models/user';

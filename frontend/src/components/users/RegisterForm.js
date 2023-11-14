@@ -1,7 +1,7 @@
 import React from 'react'
 import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
-import { Box, Button, TextField, Typography, Grid, Container } from '@material-ui/core'
+import { Box, Button, TextField, Typography, Grid, Container } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useField } from '../../hooks/inputFields'
 import userService from '../../services/users'
@@ -48,7 +48,7 @@ const RegisterForm = () => {
       userService.create(newUser).then(response => {
         dispatch(login())
         window.localStorage.setItem('loggedUser', JSON.stringify(response))
-        navigate.push('/')
+        navigate('/')
       })
       dispatch(setNotification(`Registered user ${newUser.username}`))
       handleClear(event)
@@ -101,7 +101,7 @@ const RegisterForm = () => {
             <Button variant="contained" color="primary" type="submit">Submit</Button>
           </Grid>
           <Grid item xs={12} sm={2}>
-            <Button onClick={handleClear} variant="contained" color="light">Clear</Button>
+            <Button onClick={handleClear} variant="contained" >Clear</Button>
           </Grid>
         </Grid>
       </form>

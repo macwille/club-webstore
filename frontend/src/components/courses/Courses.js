@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
-import { AppBar, Tabs, Tab, Box, Typography } from '@material-ui/core'
+import { AppBar, Tabs, Tab, Box, Typography } from '@mui/material'
 import { getCourses } from '../../reducers/courseReducer'
 import CourseList from './CourseList'
 import CourseForm from './CourseForm'

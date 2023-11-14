@@ -1,6 +1,5 @@
-import { Typography, Box, Link, Grid, IconButton } from '@material-ui/core'
+import { Typography, Box, Link, Grid, IconButton } from '@mui/material'
 import React from 'react'
-import GitHubIcon from '@material-ui/icons/GitHub'
 
 const Footer = () => {
 
@@ -16,7 +15,6 @@ const Footer = () => {
       <Grid container justifyContent="center" alignItems="center" spacing={1}>
         <Grid item >
           <IconButton href="https://github.com/macwille/club-webstore" color="primary">
-            <GitHubIcon />
           </IconButton>
         </Grid>
       </Grid>
