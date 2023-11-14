@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 
 import { Router } from 'express';
 import logger from '../util/logger';
@@ -9,7 +11,6 @@ const courseRouter = Router();
 
 courseRouter.get('/', async (_req, res) => {
   const courses = await Course.find({}).populate('trainer');
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   res.json(courses.map(map => map.toJSON()));
 });
 
