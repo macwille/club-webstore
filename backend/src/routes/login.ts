@@ -11,8 +11,11 @@ import jwt from 'jsonwebtoken';
 const loginRouter = Router();
 
 loginRouter.post('/', async (req, res) => {
+
   const body: { username: string, password: string } = req.body;
+
   const user = await User.findOne({ username: body.username });
+
   const passwordCorrect = user === null
     ? false
     : await bcrypt.compare(body.password, user.passwordHash);
@@ -23,10 +26,12 @@ loginRouter.post('/', async (req, res) => {
       error: 'Invalid username or password'
     });
   }
+
   const userForToken = {
     username: user?.username,
     id: user?._id,
   };
+  
   const token = jwt.sign(userForToken, SECRET);
 
   res.status(200).send({ username: user?.username, id: user?._id, token });

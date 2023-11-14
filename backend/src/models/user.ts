@@ -1,22 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Document, Schema, model } from 'mongoose';
-
-interface IUser extends Document {
-  username: string;
-  firstname: string;
-  lastname: string;
-  address: string;
-  postcode: number;
-  email: string;
-  euros: number;
-  cents: number;
-  stock: number;
-  passwordHash: string;
-  role: string;
-  courses: Array<Schema.Types.ObjectId>;
-  products: Array<Schema.Types.ObjectId>;
-}
+import { Schema, model } from 'mongoose';
+import IUser from 'interfaces/IUser';
 
 const userSchema = new Schema<IUser>({
   username: {

@@ -1,14 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Document, Schema, model } from 'mongoose';
-
-interface IProduct extends Document {
-  name: string;
-  description: string;
-  euros: number;
-  cents: number;
-  stock: number;
-}
+import { Schema, model } from 'mongoose';
+import IProduct from 'interfaces/IProduct';
 
 const productSchema = new Schema<IProduct>({
   name: {

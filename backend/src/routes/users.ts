@@ -2,25 +2,26 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import logger from '../util/logger';
 import User from '../models/user';
 
-const userRouter = Router();
+const userRouter: Router = Router();
 
-userRouter.get('/', async (_req, res) => {
+userRouter.get('/', async (_req: Request, res: Response) => {
   const users = await User.find().populate('courses');
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   res.json(users.map(map => map.toJSON()));
 });
 
-userRouter.get('/:id', async (req, res) => {
-  const user = await User.findOne(req.params.id).populate('courses');
+userRouter.get('/:id', async (req: Request<{id: string}>, res: Response) => {
+  console.log(req);
+  const user = await User.findById(req.params.id).populate('courses');
   res.json(user);
 });
 
-userRouter.post('/', async (req, res) => {
+userRouter.post('/', async (req: Request, res: Response) => {
   const body = req.body;
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(body.password, saltRounds);
@@ -42,7 +43,7 @@ userRouter.post('/', async (req, res) => {
 
 });
 
-userRouter.put('/:id', (req, res) => {
+userRouter.put('/:id', (req: Request, res: Response) => {
   const body = req.body;
 
   const user = {

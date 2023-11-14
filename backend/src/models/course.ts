@@ -1,17 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Document, Schema, model, Date } from 'mongoose';
-
-interface ICourse extends Document {
-  name: string,
-  description?: string,
-  startDate?: Date,
-  euros?: number,
-  cents?: number,
-  maxParticipants?: number,
-  trainer?: Schema.Types.ObjectId,
-  participants?: Schema.Types.ObjectId
-}
+import { Schema, model } from 'mongoose';
+import ICourse from 'interfaces/ICourse';
 
 const courseSchema = new Schema<ICourse>({
   name: {
