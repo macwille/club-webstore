@@ -8,7 +8,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 
 | Days | Hours |
 | :--  | :---: |
-| 17   | 99    |
+| 17   | 104    |
 
 ### Detailed 
 
@@ -30,10 +30,12 @@ Time used for the development of the project. Hours will be detailed daily and m
 | 13.10.   | Updated packages and missing working hours   | 3 |
 | 19.10.   | Started Typescript migration  | 8 |
 | 2022     | 
-| 20.1.   | Updated frontend to replace depracted modules  | 4 |
-| 21.1.   | Fixed darkmode switch bug  | 2 |
-| 17.4.   | Fixed darkmode switch bug  | 6 |
-| 14.11.2023    | Updated packages and started fixing broken code | 6 |
+| 20.1.    | Updated frontend to replace depracted modules  | 4 |
+| 21.1.    | Fixed darkmode switch bug  | 2 |
+| 17.4.    | Fixed darkmode switch bug  | 6 |
+| 2023     |
+| 14.11    | Updated packages and started fixing broken code | 6 |
+| 19.11    | Fixing npm update issues and git hub history | 5 |
 
 
 

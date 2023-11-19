@@ -22,7 +22,7 @@ const errorHandler = (e, _req, res, next) => {
 };
 
 const unknownEndpoint = (_req, res) => {
-  res.status(404).send({ error: 'unknown endpoint', status: 404 });
+  res.status(404).send({ error: 'reached unknown endpoint', status: 404 });
 };
 
 module.exports = {
