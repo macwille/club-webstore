@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, CircularProgress, Grid } from '@mui/material'
 import Course from './CourseCard'

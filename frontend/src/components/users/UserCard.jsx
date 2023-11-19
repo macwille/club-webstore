@@ -1,4 +1,3 @@
-import React from 'react'
 import { removeUser } from '../../reducers/userReducer'
 import { setNotification } from '../../reducers/notificationReducer'
 import PropTypes from 'prop-types'

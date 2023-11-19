@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { Container, Box, Button, TextField, Grid, InputLabel, NativeSelect } from '@mui/material'
@@ -53,7 +53,7 @@ const CourseForm = ({ courses, setCourses }) => {
 
   const trainers = users.filter(u => u.role === 'trainer')
   console.log(users)
-  console.log(trainers  )
+  console.log(trainers)
 
   return (
     <Box>

@@ -1,6 +1,5 @@
-import React from 'react'
 import { Link as ReactLink } from 'react-router-dom'
-import { AppBar, Box, Button, ButtonGroup, Toolbar} from '@mui/material'
+import { AppBar, Box, Button, ButtonGroup, Toolbar } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../reducers/loginReducer'
 import { setNotification } from '../reducers/notificationReducer'
@@ -15,7 +14,7 @@ const Navigation = () => {
     dispatch(setNotification('Logged out'))
     window.localStorage.clear()
   }
-  
+
   const renderButtons = () => {
     if (logged) {
       return (

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Card, CardContent, Typography } from '@mui/material'
 import { TITLE } from '../config'
 

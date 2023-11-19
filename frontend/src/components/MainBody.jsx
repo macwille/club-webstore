@@ -1,4 +1,3 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Paper } from '@mui/material/'
 import MainHeader from './MainHeader'
@@ -16,12 +15,12 @@ const MainBody = () => {
   return (
     <Paper>
       <Routes>
-        <Route path="/courses" element={<Courses/>}/>
-        <Route path="/store" element={<Store/>}/>
-        <Route path="/register" element={<RegisterForm />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/account" element={<UserPanel/>}/>
-        <Route path="/" element={<><MainHeader/><About/></>}/>
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/account" element={<UserPanel />} />
+        <Route path="/" element={<><MainHeader /><About /></>} />
       </Routes>
     </Paper>
   )

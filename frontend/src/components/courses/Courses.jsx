@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
 import { AppBar, Tabs, Tab, Box, Typography } from '@mui/material'

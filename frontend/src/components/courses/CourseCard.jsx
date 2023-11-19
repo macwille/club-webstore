@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { Card, CardContent, CardActions, Button, Typography } from '@mui/material'

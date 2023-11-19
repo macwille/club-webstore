@@ -1,4 +1,3 @@
-import React from 'react'
 import { TITLE } from '../../config'
 import { Helmet } from 'react-helmet'
 import { useNavigate } from 'react-router-dom'

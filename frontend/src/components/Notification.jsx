@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Snackbar, Button, SnackbarContent } from '@mui/material'
 import { clearNotification } from '../reducers/notificationReducer'
@@ -29,9 +28,7 @@ const Notification = () => {
         <SnackbarContent
           message={message}
           action={
-            <>
-              <Button color="primary" size="small" onClick={handleClose}>Close</Button>
-            </>
+            <Button color="primary" size="small" onClick={handleClose}>Close</Button>
           }
         />
       </Snackbar>

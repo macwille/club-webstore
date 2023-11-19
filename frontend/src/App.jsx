@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
@@ -27,8 +27,8 @@ const App = () => {
     <Router>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navigation/>
-        <Container sx={{paddingTop: 10}}>
+        <Navigation />
+        <Container sx={{ paddingTop: 10 }}>
           <Notification />
           <MainBody />
           <Footer />

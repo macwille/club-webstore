@@ -35,7 +35,7 @@ Time used for the development of the project. Hours will be detailed daily and m
 | 17.4.    | Fixed darkmode switch bug  | 6 |
 | 2023     |
 | 14.11    | Updated packages and started fixing broken code | 6 |
-| 19.11    | Fixing npm update issues and git hub history + migrate react-scripts to Vite | 6 |
+| 19.11    | Fixing npm update issues and git hub history + migrate react-scripts to Vite and refactoring | 7 |
 
 
 
