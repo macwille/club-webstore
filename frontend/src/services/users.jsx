@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { API_URL } from '../config'
 
-const baseUrl = API_URL + '/users'
+const baseUrl = '/users'
 
 const getAll = () => {
   const request = axios.get(baseUrl)
